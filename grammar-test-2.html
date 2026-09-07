@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#4f46e5">
+<title>Strong Grammar Coach 2</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+  background:#f7f8fc;
+  color:#1f2937;
+}
+.app{
+  max-width:760px;
+  margin:auto;
+  padding:24px 16px 80px;
+}
+h1{font-size:29px;margin:0 0 6px}
+.subtitle{color:#6b7280;line-height:1.5;margin-bottom:18px}
+.card{
+  background:white;
+  border:1px solid #e5e7eb;
+  border-radius:20px;
+  padding:18px;
+  margin-bottom:16px;
+}
+textarea{
+  width:100%;
+  min-height:150px;
+  padding:14px;
+  font-size:17px;
+  border:1px solid #d1d5db;
+  border-radius:15px;
+  resize:vertical;
+}
+button{
+  border:0;
+  border-radius:14px;
+  padding:13px 15px;
+  margin:6px 3px 2px 0;
+  font-size:15px;
+  font-weight:700;
+}
+.primary{background:#4f46e5;color:white}
+.secondary{background:#eef2ff;color:#4f46e5}
+.ghost{background:white;color:#2563eb;border:1px solid #d1d5db}
+.result{
+  display:none;
+  margin-top:16px;
+  background:#f3f4f6;
+  border-radius:16px;
+  padding:15px;
+  line-height:1.65;
+}
+.corrected{
+  font-size:18px;
+  font-weight:700;
+  margin-top:5px;
+}
+.note{
+  margin-top:9px;
+  padding:10px;
+  background:white;
+  border:1px solid #e5e7eb;
+  border-radius:12px;
+}
+.small{font-size:13px;color:#6b7280;line-height:1.5}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<h1>Strong Grammar Coach 2</h1>
+<div class="subtitle">
+Everyday English • Work English • Accounting English
+</div>
+
+<div class="card">
+
+<h2>Write your sentence</h2>
+
+<textarea id="inputText"
+placeholder="Example: Small problems can prevent, if you escalate immediately"></textarea>
+
+<button class="primary" id="checkBtn">
+Correct My Grammar
+</button>
+
+<button class="secondary" id="exampleBtn">
+Try Example
+</button>
+
+<button class="ghost" id="clearBtn">
+Clear
+</button>
+
+<div id="result" class="result"></div>
+
+</div>
+
+<div class="card">
+
+<h2>Practice examples</h2>
+
+<button class="secondary sample"
+data-text="I am agree with you because this option is more better.">
+Everyday
+</button>
+
+<button class="secondary sample"
+data-text="Yesterday I go to office and discussed about the delayed payment.">
+Work
+</button>
+
+<button class="secondary sample"
+data-text="The expenses is higher than collections and cash inflows is not enough to outflows.">
+Accounting
+</button>
+
+<button class="secondary sample"
+data-text="She don't submitted the report yesterday because she didn't knew the deadline.">
+Tense
+</button>
+
+<button class="secondary sample"
+data-text="As per checking, management have not yet approve the request and we need to discussed this immediately.">
+Professional
+</button>
+
+</div>
+
+<div class="card">
+<div class="small">
+This test version works without an API. It checks many common grammar and business-English patterns. After we confirm this works properly, we can put the stronger checker inside your full Mega app.
+</div>
+</div>
+
+</div>
+
+<script>
+
+const input = document.getElementById("inputText");
+const result = document.getElementById("result");
+const checkBtn = document.getElementById("checkBtn");
+const exampleBtn = document.getElementById("exampleBtn");
+const clearBtn = document.getElementById("clearBtn");
+
+
+function escapeHtml(text){
+  return text
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;");
+}
+
+
+function correctGrammar(original){
+
+  let text = original.trim();
+  let notes = [];
+
+  function fix(regex,replacement,message){
+
+    const before = text;
+
+    text = text.replace(regex,replacement);
+
+    if(text !== before){
+      notes.push(message);
+    }
+
+  }
+
+
+  /* AGREEMENT */
+
+  fix(
+    /\bi am agree\b/gi,
+    "I agree",
+    'Use "I agree," not "I am agree."'
+  );
+
+  fix(
+    /\bshe don't\b/gi,
+    "she doesn't",
+    'Use "doesn’t" with she.'
+  );
+
+  fix(
+    /\bhe don't\b/gi,
+    "he doesn't",
+    'Use "doesn’t" with he.'
+  );
+
+  fix(
+    /\bit don't\b/gi,
+    "it doesn't",
+    'Use "doesn’t" with it.'
+  );
+
+  fix(
+    /\bexpenses is\b/gi,
+    "expenses are",
+    'Expenses is plural, so use "are."'
+  );
+
+  fix(
+    /\bcollections is\b/gi,
+    "collections are",
+    'Collections is plural, so use "are."'
+  );
+
+  fix(
+    /\bpayments is\b/gi,
+    "payments are",
+    'Payments is plural, so use "are."'
+  );
+
+  fix(
+    /\bcash inflows is\b/gi,
+    "cash inflows are",
+    'Cash inflows is plural, so use "are."'
+  );
+
+  fix(
+    /\bpayment are\b/gi,
+    "payment is",
+    'Payment is singular, so use "is."'
+  );
+
+  fix(
+    /\bmanagement have\b/gi,
+    "management has",
+    'Use "management has" in this sentence.'
+  );
+
+
+  /* DOES / DID */
+
+  fix(
+    /\bdoesn't knows\b/gi,
+    "doesn't know",
+    'Use the base verb after "doesn’t."'
+  );
+
+  fix(
+    /\bdoesn't has\b/gi,
+    "doesn't have",
+    'Use "have" after "doesn’t."'
+  );
+
+  fix(
+    /\bdidn't went\b/gi,
+    "didn't go",
+    'Use the base verb after "didn’t."'
+  );
+
+  fix(
+    /\bdidn't knew\b/gi,
+    "didn't know",
+    'Use the base verb after "didn’t."'
+  );
+
+  fix(
+    /\bdidn't submitted\b/gi,
+    "didn't submit",
+    'Use "submit" after "didn’t."'
+  );
+
+  fix(
+    /\bdidn't received\b/gi,
+    "didn't receive",
+    'Use "receive" after "didn’t."'
+  );
+
+
+  /* AFTER TO */
+
+  fix(
+    /\bneed to discussed\b/gi,
+    "need to discuss",
+    'Use the base verb after "to."'
+  );
+
+  fix(
+    /\bneed to submitted\b/gi,
+    "need to submit",
+    'Use the base verb after "to."'
+  );
+
+  fix(
+    /\bneed to reviewed\b/gi,
+    "need to review",
+    'Use the base verb after "to."'
+  );
+
+  fix(
+    /\bneed to approved\b/gi,
+    "need to approve",
+    'Use the base verb after "to."'
+  );
+
+
+  /* PAST TENSE */
+
+  fix(
+    /\byesterday i go\b/gi,
+    "Yesterday I went",
+    'Use past tense with "yesterday."'
+  );
+
+  fix(
+    /\byesterday we go\b/gi,
+    "Yesterday we went",
+    'Use past tense with "yesterday."'
+  );
+
+  fix(
+    /\byesterday she go\b/gi,
+    "Yesterday she went",
+    'Use past tense with "yesterday."'
+  );
+
+  fix(
+    /\blast week i go\b/gi,
+    "Last week I went",
+    'Use past tense with "last week."'
+  );
+
+
+  /* PRESENT PERFECT */
+
+  fix(
+    /\bi have went\b/gi,
+    "I have gone",
+    'Use "gone" after "have."'
+  );
+
+  fix(
+    /\bi have saw\b/gi,
+    "I have seen",
+    'Use "seen" after "have."'
+  );
+
+  fix(
+    /\bi have did\b/gi,
+    "I have done",
+    'Use "done" after "have."'
+  );
+
+
+  /* COMPARATIVES */
+
+  fix(
+    /\bmore better\b/gi,
+    "better",
+    '"Better" is already comparative.'
+  );
+
+  fix(
+    /\bmore higher\b/gi,
+    "higher",
+    '"Higher" is already comparative.'
+  );
+
+  fix(
+    /\bmore easier\b/gi,
+    "easier",
+    '"Easier" is already comparative.'
+  );
+
+  fix(
+    /\bmore faster\b/gi,
+    "faster",
+    '"Faster" is already comparative.'
+  );
+
+
+  /* PREPOSITIONS / EXTRA WORDS */
+
+  fix(
+    /\bdiscuss about\b/gi,
+    "discuss",
+    '"Discuss" does not need "about."'
+  );
+
+  fix(
+    /\bdiscussed about\b/gi,
+    "discussed",
+    '"Discuss" does not need "about."'
+  );
+
+  fix(
+    /\bregarding about\b/gi,
+    "regarding",
+    '"Regarding" does not need "about."'
+  );
+
+  fix(
+    /\breturn back\b/gi,
+    "return",
+    '"Return" already means go back.'
+  );
+
+  fix(
+    /\brevert back\b/gi,
+    "reply",
+    'Use "reply" for more natural English.'
+  );
+
+  fix(
+    /\bkindly please\b/gi,
+    "please",
+    'Use either "kindly" or "please."'
+  );
+
+  fix(
+    /\bcope up with\b/gi,
+    "cope with",
+    'The correct phrase is "cope with."'
+  );
+
+  fix(
+    /\bdespite of\b/gi,
+    "despite",
+    'Use "despite" or "in spite of."'
+  );
+
+  fix(
+    /\bexplain me\b/gi,
+    "explain to me",
+    'Use "explain to me."'
+  );
+
+
+  /* OFFICE / ARTICLES */
+
+  fix(
+    /\bgo to office\b/gi,
+    "go to the office",
+    'Use "the office."'
+  );
+
+  fix(
+    /\bwent to office\b/gi,
+    "went to the office",
+    'Use "the office."'
+  );
+
+
+  /* UNCOUNTABLE NOUNS */
+
+  fix(
+    /\binformations\b/gi,
+    "information",
+    '"Information" is uncountable.'
+  );
+
+  fix(
+    /\badvices\b/gi,
+    "advice",
+    '"Advice" is uncountable.'
+  );
+
+  fix(
+    /\bfurnitures\b/gi,
+    "furniture",
+    '"Furniture" is uncountable.'
+  );
+
+
+  /* BUSINESS ENGLISH */
+
+  fix(
+    /\bas per checking\b/gi,
+    "upon checking",
+    '"Upon checking" is more natural.'
+  );
+
+  fix(
+    /\bfor checking\b/gi,
+    "for review",
+    '"For review" is usually more natural.'
+  );
+
+  fix(
+    /\bcan able to\b/gi,
+    "can",
+    'Use "can" or "be able to," not both.'
+  );
+
+  fix(
+    /\bmanagement has not yet approve\b/gi,
+    "management has not yet approved",
+    'After "has," use "approved."'
+  );
+
+  fix(
+    /\bmanagement have not yet approve\b/gi,
+    "management has not yet approved",
+    'Use "management has not yet approved."'
+  );
+
+  fix(
+    /\breport already submit\b/gi,
+    "report has already been submitted",
+    'Use "has already been submitted."'
+  );
+
+  fix(
+    /\bpayment already process\b/gi,
+    "payment has already been processed",
+    'Use "has already been processed."'
+  );
+
+  fix(
+    /\bpayments is pending\b/gi,
+    "payments are pending",
+    'Payments is plural.'
+  );
+
+
+  /* CASH FLOW */
+
+  fix(
+    /\bcash inflows are not enough to outflows\b/gi,
+    "cash inflows are not enough to cover the outflows",
+    'Use "enough to cover the outflows."'
+  );
+
+  fix(
+    /\bcash inflows is not enough to outflows\b/gi,
+    "cash inflows are not enough to cover the outflows",
+    'Use "cash inflows are not enough to cover the outflows."'
+  );
+
+  fix(
+    /\bexpenses are higher than collections\b/gi,
+    "expenses are higher than our collections",
+    'Adding "our" makes the comparison clearer.'
+  );
+
+
+  /* YOUR EXAMPLE */
+
+  fix(
+    /\bsmall problems can prevent,\s*if you escalate immediately\b/gi,
+    "Small problems can be prevented if you escalate them immediately",
+    'Use passive voice: "can be prevented." Also add "them" after "escalate."'
+  );
+
+  fix(
+    /\bsmall problems can prevent if you escalate immediately\b/gi,
+    "Small problems can be prevented if you escalate them immediately",
+    'Use passive voice: "can be prevented." Also add "them" after "escalate."'
+  );
+
+
+  /* CLEAN PUNCTUATION */
+
+  text = text
+    .replace(/\s+([,.!?])/g,"$1")
+    .replace(/,\s+if\b/gi," if")
+    .replace(/\s{2,}/g," ")
+    .trim();
+
+
+  if(text.length > 0){
+    text = text.charAt(0).toUpperCase() + text.slice(1);
+  }
+
+
+  if(text && !/[.!?]$/.test(text)){
+    text += ".";
+  }
+
+
+  return {
+    corrected:text,
+    notes:notes
+  };
+
+}
+
+
+function runCheck(){
+
+  const sentence = input.value.trim();
+
+  if(!sentence){
+
+    result.style.display="block";
+
+    result.innerHTML=
+      "<b>Please type a sentence first.</b>";
+
+    return;
+
+  }
+
+
+  const checked = correctGrammar(sentence);
+
+
+  let html =
+    "<b>Suggested correction:</b>" +
+    '<div class="corrected">' +
+    escapeHtml(checked.corrected) +
+    "</div>";
+
+
+  if(checked.notes.length > 0){
+
+    html += "<br><b>Explanation:</b>";
+
+    checked.notes.forEach(function(note){
+
+      html +=
+        '<div class="note">' +
+        escapeHtml(note) +
+        "</div>";
+
+    });
+
+  }else{
+
+    html +=
+      '<div class="note">' +
+      "No matching rule was found. This does not always mean the sentence is perfect." +
+      "</div>";
+
+  }
+
+
+  result.innerHTML = html;
+
+  result.style.display="block";
+
+}
+
+
+checkBtn.addEventListener("click",runCheck);
+
+
+exampleBtn.addEventListener("click",function(){
+
+  input.value =
+    "Small problems can prevent, if you escalate immediately";
+
+  runCheck();
+
+});
+
+
+clearBtn.addEventListener("click",function(){
+
+  input.value="";
+
+  result.innerHTML="";
+
+  result.style.display="none";
+
+});
+
+
+document.querySelectorAll(".sample").forEach(function(button){
+
+  button.addEventListener("click",function(){
+
+    input.value =
+      button.getAttribute("data-text");
+
+    runCheck();
+
+  });
+
+});
+
+</script>
+
+</body>
+</html>
