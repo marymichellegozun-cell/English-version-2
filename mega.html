@@ -1,0 +1,2934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#4f46e5">
+<title>English Practice Mega</title>
+
+<style>
+*{box-sizing:border-box}
+
+:root{
+--p:#4f46e5;
+--pl:#eef2ff;
+--bg:#f7f8fc;
+--card:#ffffff;
+--t:#1f2937;
+--m:#6b7280;
+--line:#e5e7eb;
+--g:#dcfce7;
+--r:#fee2e2;
+--y:#fef3c7;
+}
+
+body{
+margin:0;
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+background:var(--bg);
+color:var(--t);
+}
+
+.app{
+max-width:820px;
+margin:auto;
+padding:18px 14px 110px;
+}
+
+h1{font-size:27px;margin:0}
+h2{font-size:20px;margin:0 0 10px}
+h3{margin:0 0 8px}
+
+.subtitle,.small{
+color:var(--m);
+font-size:13px;
+line-height:1.5;
+}
+
+.subtitle{margin-top:5px}
+
+.card{
+background:var(--card);
+border:1px solid var(--line);
+border-radius:20px;
+padding:17px;
+margin:13px 0;
+}
+
+.prompt{
+font-size:18px;
+font-weight:700;
+line-height:1.5;
+}
+
+.tip,.result{
+border-radius:15px;
+padding:13px;
+line-height:1.55;
+}
+
+.tip{background:var(--pl)}
+
+.result{
+background:#f3f4f6;
+margin-top:12px;
+}
+
+textarea,select{
+width:100%;
+padding:12px;
+border:1px solid var(--line);
+border-radius:14px;
+background:#fff;
+font:inherit;
+font-size:16px;
+margin-top:10px;
+}
+
+textarea{
+min-height:110px;
+resize:vertical;
+}
+
+button{
+border:0;
+border-radius:14px;
+padding:12px 14px;
+margin:4px 2px;
+font-size:14px;
+font-weight:700;
+}
+
+.primary{
+background:var(--p);
+color:white;
+}
+
+.secondary{
+background:var(--pl);
+color:var(--p);
+}
+
+.ghost{
+background:white;
+border:1px solid var(--line);
+}
+
+.hidden{display:none!important}
+
+.choice{
+display:block;
+width:100%;
+text-align:left;
+background:white;
+border:1px solid var(--line);
+margin:7px 0;
+}
+
+.correct{background:var(--g)!important}
+.wrong{background:var(--r)!important}
+
+.stats{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:7px;
+margin-top:14px;
+}
+
+.stat{
+text-align:center;
+background:white;
+border:1px solid var(--line);
+border-radius:15px;
+padding:10px 4px;
+}
+
+.stat b{
+display:block;
+font-size:19px;
+}
+
+.stat span{
+font-size:10px;
+color:var(--m);
+}
+
+.storybox{
+background:#fff;
+border:1px solid var(--line);
+border-radius:15px;
+padding:15px;
+font-size:17px;
+line-height:1.8;
+}
+
+.badge{
+display:inline-block;
+background:var(--y);
+border-radius:8px;
+padding:3px 7px;
+margin:3px;
+font-size:13px;
+}
+
+.nav{
+position:fixed;
+bottom:0;
+left:0;
+right:0;
+background:rgba(255,255,255,.97);
+border-top:1px solid var(--line);
+padding:7px 3px calc(7px + env(safe-area-inset-bottom));
+}
+
+.nav-inner{
+max-width:820px;
+margin:auto;
+display:grid;
+grid-template-columns:repeat(6,1fr);
+}
+
+.nav button{
+background:transparent;
+color:var(--m);
+margin:0;
+padding:7px 1px;
+font-size:9px;
+}
+
+.nav button.active{
+color:var(--p);
+background:var(--pl);
+}
+
+.icon{
+display:block;
+font-size:19px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<h1>English Practice Mega</h1>
+<div class="subtitle">
+Everyday English • Grammar • Stories • Pronunciation • Work English
+</div>
+
+<section id="home">
+
+<div class="stats">
+<div class="stat"><b id="streak">0</b><span>Streak</span></div>
+<div class="stat"><b id="sessions">0</b><span>Practice</span></div>
+<div class="stat"><b id="grammarScore">0%</b><span>Grammar</span></div>
+<div class="stat"><b>10K+</b><span>Combinations</span></div>
+</div>
+
+<div class="card">
+<h2>15-Minute Daily Routine</h2>
+<p>
+5 minutes Everyday English • 5 minutes Story Reading •
+5 minutes Grammar or Pronunciation
+</p>
+<button class="primary" onclick="showPage('story')">
+Start with a Story
+</button>
+</div>
+
+<div class="card">
+<h2>Daily Speaking Challenge</h2>
+<div id="dailyPrompt" class="prompt"></div>
+
+<textarea
+id="dailyAnswer"
+placeholder="Type or dictate your answer..."></textarea>
+
+<button class="primary" onclick="checkDaily()">
+Quick Check
+</button>
+
+<button class="secondary" onclick="newDaily()">
+New Question
+</button>
+
+<div id="dailyResult" class="result hidden"></div>
+</div>
+
+</section>
+
+
+<section id="everyday" class="hidden">
+
+<div class="card">
+
+<h2>Everyday English</h2>
+
+<select id="everydayLevel">
+<option value="easy">Easy</option>
+<option value="normal">Normal</option>
+<option value="advanced">More Challenging</option>
+</select>
+
+<div id="everydayPrompt" class="prompt" style="margin-top:14px"></div>
+
+<textarea
+id="everydayAnswer"
+placeholder="Answer naturally..."></textarea>
+
+<button class="primary" onclick="checkEveryday()">
+Grammar Check
+</button>
+
+<button class="secondary" onclick="showEverydaySample()">
+Sample Answer
+</button>
+
+<button class="ghost" onclick="newEveryday()">
+New Situation
+</button>
+
+<button
+class="ghost"
+onclick="speak(document.getElementById('everydayPrompt').textContent,.82)">
+🔊 Listen
+</button>
+
+<div id="everydayResult" class="result hidden"></div>
+
+</div>
+</section>
+
+
+<section id="grammar" class="hidden">
+
+<div class="card">
+
+<h2>My Grammar Coach</h2>
+
+<textarea
+id="freeGrammar"
+placeholder="Example: Yesterday I go to office and discussed about the payment."></textarea>
+
+<button class="primary" onclick="grammarCoach()">
+Correct My Grammar
+</button>
+
+<button class="secondary" onclick="grammarExample()">
+Try Example
+</button>
+
+<button class="ghost" onclick="clearGrammar()">
+Clear
+</button>
+
+<div id="grammarCoachResult" class="result hidden"></div>
+
+<p class="small">
+Offline rule-based checker. It catches many common mistakes but
+is not a full AI grammar model.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h2>Grammar Quiz</h2>
+
+<div id="grammarQuestion" class="prompt"></div>
+<div id="grammarChoices"></div>
+
+<div id="grammarQuizResult" class="result hidden"></div>
+
+<button class="secondary" onclick="newGrammarQuiz()">
+New Question
+</button>
+
+</div>
+
+</section>
+
+
+<section id="story" class="hidden">
+
+<div class="card">
+
+<h2>Story Reading</h2>
+
+<select id="storyLevel" onchange="newStory()">
+<option value="easy">Easy</option>
+<option value="intermediate">Intermediate</option>
+<option value="upper">Upper Intermediate</option>
+</select>
+
+<div id="storyTitle" class="prompt" style="margin-top:12px"></div>
+
+<div id="storyText" class="storybox" style="margin-top:10px"></div>
+
+<button class="primary" onclick="speak(currentStory.text,.82)">
+🔊 Normal
+</button>
+
+<button class="secondary" onclick="speak(currentStory.text,.58)">
+🐢 Slow
+</button>
+
+<button class="ghost" onclick="newStory()">
+New Story
+</button>
+
+<div class="tip" style="margin-top:12px">
+<b>Vocabulary:</b>
+<div id="storyWords"></div>
+</div>
+
+<div style="margin-top:16px">
+
+<h3>Comprehension</h3>
+
+<div id="storyQuestion" class="prompt"></div>
+<div id="storyChoices"></div>
+
+<div id="storyResult" class="result hidden"></div>
+
+</div>
+
+
+<div class="card" style="margin-bottom:0">
+
+<h3>Retell the Story</h3>
+
+<p class="small">
+Explain the story in your own words. Try 3–5 sentences.
+</p>
+
+<textarea
+id="retellAnswer"
+placeholder="Retell the story here..."></textarea>
+
+<button class="primary" onclick="checkRetell()">
+Quick Check
+</button>
+
+<div id="retellResult" class="result hidden"></div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section id="pronounce" class="hidden">
+
+<div class="card">
+
+<h2>Pronunciation</h2>
+
+<div id="pronPhrase" class="prompt"></div>
+<div id="pronHint" class="small"></div>
+
+<button class="primary" onclick="speak(currentPron,.82)">
+🔊 Normal
+</button>
+
+<button class="secondary" onclick="speak(currentPron,.55)">
+🐢 Slow
+</button>
+
+<button class="ghost" onclick="newPronunciation()">
+New Phrase
+</button>
+
+<div class="tip" style="margin-top:15px">
+Listen → repeat slowly 3 times → repeat naturally 3 times →
+use iPhone keyboard dictation and see whether the sentence is
+recognized correctly.
+</div>
+
+</div>
+
+</section>
+
+
+<section id="work" class="hidden">
+
+<div class="card">
+
+<h2>Work English</h2>
+
+<select id="workType" onchange="newWork()">
+
+<option value="management">Management / CEO</option>
+<option value="accounting">Accounting</option>
+<option value="cash">Cash Flow</option>
+<option value="supplier">Supplier / Payment</option>
+<option value="meeting">Meeting Update</option>
+<option value="audit">Audit / Compliance</option>
+<option value="team">Team / Leadership</option>
+
+</select>
+
+<div id="workPrompt" class="prompt" style="margin-top:14px"></div>
+
+<textarea
+id="workAnswer"
+placeholder="Type or dictate your answer..."></textarea>
+
+<button class="primary" onclick="checkWork()">
+Grammar Check
+</button>
+
+<button class="secondary" onclick="showWorkSample()">
+Sample Answer
+</button>
+
+<button class="ghost" onclick="newWork()">
+New Scenario
+</button>
+
+<button
+class="ghost"
+onclick="speak(document.getElementById('workPrompt').textContent,.82)">
+🔊 Listen
+</button>
+
+<div id="workResult" class="result hidden"></div>
+
+</div>
+
+</section>
+
+</div>
+
+
+<div class="nav">
+
+<div class="nav-inner">
+
+<button data-page="home" class="active" onclick="showPage('home')">
+<span class="icon">🏠</span>
+Home
+</button>
+
+<button data-page="everyday" onclick="showPage('everyday')">
+<span class="icon">💬</span>
+Everyday
+</button>
+
+<button data-page="grammar" onclick="showPage('grammar')">
+<span class="icon">✍️</span>
+Grammar
+</button>
+
+<button data-page="story" onclick="showPage('story')">
+<span class="icon">📖</span>
+Story
+</button>
+
+<button data-page="pronounce" onclick="showPage('pronounce')">
+<span class="icon">🔊</span>
+Pronounce
+</button>
+
+<button data-page="work" onclick="showPage('work')">
+<span class="icon">💼</span>
+Work
+</button>
+
+</div>
+
+</div>
+
+
+<script>
+
+const pages=[
+"home",
+"everyday",
+"grammar",
+"story",
+"pronounce",
+"work"
+];
+
+let state;
+
+try{
+state=JSON.parse(localStorage.getItem("englishMegaV4")||"{}");
+}catch(e){
+state={};
+}
+
+state.sessions=state.sessions||0;
+state.streak=state.streak||0;
+state.lastDate=state.lastDate||"";
+state.correct=state.correct||0;
+state.total=state.total||0;
+
+
+function save(){
+
+localStorage.setItem(
+"englishMegaV4",
+JSON.stringify(state)
+);
+
+updateStats();
+
+}
+
+
+function updateStats(){
+
+document.getElementById("streak").textContent=state.streak;
+document.getElementById("sessions").textContent=state.sessions;
+
+document.getElementById("grammarScore").textContent=
+state.total
+?
+Math.round(state.correct/state.total*100)+"%"
+:
+"0%";
+
+}
+
+
+function practice(){
+
+const today=
+new Date().toLocaleDateString("en-CA");
+
+if(state.lastDate!==today){
+
+const yesterday=new Date();
+
+yesterday.setDate(
+yesterday.getDate()-1
+);
+
+const y=
+yesterday.toLocaleDateString("en-CA");
+
+state.streak=
+state.lastDate===y
+?
+state.streak+1
+:
+1;
+
+state.lastDate=today;
+
+}
+
+state.sessions++;
+
+save();
+
+}
+
+
+function showPage(page){
+
+pages.forEach(p=>{
+document.getElementById(p).classList.add("hidden");
+});
+
+document
+.getElementById(page)
+.classList.remove("hidden");
+
+document
+.querySelectorAll(".nav button")
+.forEach(btn=>{
+
+btn.classList.toggle(
+"active",
+btn.dataset.page===page
+);
+
+});
+
+scrollTo(0,0);
+
+}
+
+
+function speak(text,rate){
+
+if(!("speechSynthesis" in window))return;
+
+speechSynthesis.cancel();
+
+const u=
+new SpeechSynthesisUtterance(text);
+
+u.lang="en-US";
+u.rate=rate||.82;
+
+speechSynthesis.speak(u);
+
+}
+
+
+function pick(arr){
+
+return arr[
+Math.floor(
+Math.random()*arr.length
+)
+];
+
+}
+
+
+function esc(text){
+
+return text
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;");
+
+}
+
+
+/* =========================
+   DAILY SPEAKING
+========================= */
+
+const dailyTopics=[
+
+"your morning routine",
+"what you did yesterday",
+"your plans for tomorrow",
+"your favorite meal",
+"a recent trip",
+"your work responsibilities",
+"a challenge you solved",
+"a person you admire",
+"a goal for this month",
+"a useful habit",
+"your family weekend",
+"something you learned",
+"a difficult decision",
+"a place you want to visit",
+"how you relax",
+"how you organize your day",
+"a recent purchase",
+"a happy memory",
+"your English goals",
+"something you want to improve",
+"a recent conversation",
+"your favorite place",
+"something you are proud of",
+"a task you completed",
+"a problem you handled calmly",
+"a person who helped you",
+"a lesson you learned at work",
+"how you prepare for meetings",
+"how you manage stress",
+"your plans for next weekend",
+"a skill you want to develop",
+"a food you want to learn to cook",
+"a country you want to visit",
+"a movie or series you enjoyed",
+"a good decision you made",
+"a difficult day you experienced",
+"something you want to change",
+"your ideal vacation",
+"your favorite family activity",
+"a useful app you use",
+"a recent shopping experience",
+"a recent restaurant experience",
+"a time you helped someone",
+"a time someone helped you",
+"a busy day at work",
+"your plans for the next year",
+"your favorite childhood memory",
+"what makes a good leader",
+"what makes a good coworker",
+"how you learn new things"
+
+];
+
+const dailyFrames=[
+
+"Tell me about ",
+"Describe ",
+"Explain ",
+"Give me a short story about ",
+"Talk for one minute about ",
+"Share your experience about ",
+"Give your opinion about ",
+"Describe one example of ",
+"Explain why you like or dislike ",
+"Tell me something interesting about "
+
+];
+
+
+function newDaily(){
+
+document.getElementById("dailyPrompt").textContent=
+pick(dailyFrames)+
+pick(dailyTopics)+
+".";
+
+document
+.getElementById("dailyResult")
+.classList.add("hidden");
+
+}
+
+
+function checkDaily(){
+
+const text=
+document
+.getElementById("dailyAnswer")
+.value
+.trim();
+
+const box=
+document.getElementById("dailyResult");
+
+box.classList.remove("hidden");
+
+if(!text){
+
+box.textContent=
+"Please answer first.";
+
+return;
+
+}
+
+const g=
+runGrammarRules(text);
+
+box.innerHTML=
+"<b>Corrected:</b><br>"+
+esc(g.corrected)+
+"<br><br>"+
+g.explanation+
+"<br><br><b>Speaking tip:</b> Add one reason, one example, and one feeling.";
+
+practice();
+
+}
+
+
+/* =========================
+   EVERYDAY ENGLISH
+========================= */
+
+const people=[
+
+"a coworker",
+"a friend",
+"a neighbor",
+"a teacher",
+"a receptionist",
+"a cashier",
+"a waiter",
+"a hotel employee",
+"a driver",
+"a shop assistant",
+"a parent",
+"a customer-service agent",
+"a bank staff member",
+"an airport employee",
+"a clinic receptionist",
+"a supervisor",
+"a manager",
+"a classmate",
+"a security guard",
+"a delivery rider"
+
+];
+
+const places=[
+
+"at work",
+"in a cafe",
+"at a restaurant",
+"at the mall",
+"at school",
+"at the airport",
+"at a hotel",
+"at the bank",
+"on the phone",
+"at a supermarket",
+"at a clinic",
+"at a train station",
+"in a taxi",
+"at a family gathering",
+"in your neighborhood",
+"at a pharmacy",
+"in a meeting",
+"at a coffee shop",
+"at a reception desk",
+"inside an elevator"
+
+];
+
+const intents=[
+
+"ask for help",
+"ask for directions",
+"make a polite request",
+"explain a delay",
+"ask for the price",
+"ask for an available time",
+"say you do not understand",
+"ask someone to repeat",
+"make small talk",
+"give a short update",
+"politely disagree",
+"thank the person",
+"ask for a recommendation",
+"explain what you need",
+"confirm information",
+"change an appointment",
+"ask if something is available",
+"ask for an alternative",
+"apologize politely",
+"end the conversation politely",
+"ask for clarification",
+"ask about a schedule",
+"ask about payment options",
+"ask about a product",
+"ask about a service",
+"explain a problem",
+"request a refund",
+"request a replacement",
+"ask someone to wait",
+"ask when something will be ready"
+
+];
+
+const everydaySamples=[
+
+"Excuse me, could you please help me with this?",
+
+"Could you please tell me where I should go?",
+
+"I'm sorry for the delay. I'm checking it now and I'll update you shortly.",
+
+"May I ask how much this costs?",
+
+"Do you have any available time this afternoon?",
+
+"I'm sorry, I didn't quite understand that. Could you explain it again?",
+
+"Could you please repeat that a little more slowly?",
+
+"Hi, how has your day been so far?",
+
+"Just a quick update: everything is progressing, and I'm following up on the remaining items.",
+
+"I understand your point, but I see it a little differently.",
+
+"Thank you very much. I appreciate your help.",
+
+"Could you recommend the best option for me?",
+
+"Just to confirm, is this information correct?",
+
+"I'd like to change my appointment. Do you have another available schedule?",
+
+"Do you have this available in another size or option?",
+
+"Could you please explain the process to me?",
+
+"Would it be possible to change the schedule?",
+
+"Could you please let me know when this will be ready?",
+
+"I'm sorry for the inconvenience. Thank you for your patience.",
+
+"Is there another option that you can recommend?"
+
+];
+
+let currentEveryday={};
+
+
+function newEveryday(){
+
+const level=
+document
+.getElementById("everydayLevel")
+.value;
+
+const person=pick(people);
+const place=pick(places);
+const intent=pick(intents);
+
+let question=
+"You are talking to "+
+person+
+" "+
+place+
+". "+
+intent.charAt(0).toUpperCase()+
+intent.slice(1)+
+" in natural English.";
+
+if(level==="advanced"){
+
+question+=
+" Give a complete answer with a reason and one follow-up question.";
+
+}
+
+currentEveryday={
+q:question,
+sample:pick(everydaySamples)
+};
+
+document
+.getElementById("everydayPrompt")
+.textContent=question;
+
+document
+.getElementById("everydayResult")
+.classList.add("hidden");
+
+}
+
+
+function showEverydaySample(){
+
+const box=
+document.getElementById("everydayResult");
+
+box.classList.remove("hidden");
+
+box.innerHTML=
+"<b>Sample:</b><br>"+
+esc(currentEveryday.sample);
+
+}
+
+
+function checkEveryday(){
+
+const text=
+document
+.getElementById("everydayAnswer")
+.value
+.trim();
+
+const box=
+document.getElementById("everydayResult");
+
+box.classList.remove("hidden");
+
+if(!text){
+
+box.textContent=
+"Please answer first.";
+
+return;
+
+}
+
+const g=
+runGrammarRules(text);
+
+box.innerHTML=
+"<b>Corrected:</b><br>"+
+esc(g.corrected)+
+"<br><br>"+
+g.explanation;
+
+practice();
+
+}
+
+
+/* =========================
+   GRAMMAR COACH
+========================= */
+
+function runGrammarRules(original){
+
+let text=
+original.trim();
+
+let notes=[];
+
+function rule(
+regex,
+replacement,
+wrong,
+correct,
+why
+){
+
+const before=text;
+
+text=
+text.replace(
+regex,
+replacement
+);
+
+if(text!==before){
+
+notes.push(
+"• <b>"+
+esc(wrong)+
+"</b> → <b>"+
+esc(correct)+
+"</b><br>"+
+esc(why)
+);
+
+}
+
+}
+
+
+rule(
+/\bi am agree\b/gi,
+"I agree",
+"I am agree",
+"I agree",
+"Agree is a verb."
+);
+
+
+rule(
+/\bdiscuss about\b/gi,
+"discuss",
+"discuss about",
+"discuss",
+"Discuss does not need about."
+);
+
+
+rule(
+/\bdiscussed about\b/gi,
+"discussed",
+"discussed about",
+"discussed",
+"Discuss does not need about."
+);
+
+
+rule(
+/\bmore better\b/gi,
+"better",
+"more better",
+"better",
+"Better is already comparative."
+);
+
+
+rule(
+/\bmore higher\b/gi,
+"higher",
+"more higher",
+"higher",
+"Higher is already comparative."
+);
+
+
+rule(
+/\bmore easier\b/gi,
+"easier",
+"more easier",
+"easier",
+"Easier is already comparative."
+);
+
+
+rule(
+/\bmore faster\b/gi,
+"faster",
+"more faster",
+"faster",
+"Faster is already comparative."
+);
+
+
+rule(
+/bshe don't\b/gi,
+"she doesn't",
+"she don't",
+"she doesn't",
+"Use doesn't with she."
+);
+
+
+rule(
+/bhe don't\b/gi,
+"he doesn't",
+"he don't",
+"he doesn't",
+"Use doesn't with he."
+);
+
+
+rule(
+/bit don't\b/gi,
+"it doesn't",
+"it don't",
+"it doesn't",
+"Use doesn't with it."
+);
+
+
+rule(
+/bdoesn't knows\b/gi,
+"doesn't know",
+"doesn't knows",
+"doesn't know",
+"Use the base verb after doesn't."
+);
+
+
+rule(
+/bdoesn't has\b/gi,
+"doesn't have",
+"doesn't has",
+"doesn't have",
+"Use have after doesn't."
+);
+
+
+rule(
+/bdidn't went\b/gi,
+"didn't go",
+"didn't went",
+"didn't go",
+"Use the base verb after didn't."
+);
+
+
+rule(
+/bdidn't submitted\b/gi,
+"didn't submit",
+"didn't submitted",
+"didn't submit",
+"Use the base verb after didn't."
+);
+
+
+rule(
+/bdidn't received\b/gi,
+"didn't receive",
+"didn't received",
+"didn't receive",
+"Use the base verb after didn't."
+);
+
+
+rule(
+/byesterday i go\b/gi,
+"Yesterday I went",
+"Yesterday I go",
+"Yesterday I went",
+"Use past tense with yesterday."
+);
+
+
+rule(
+/byesterday we go\b/gi,
+"Yesterday we went",
+"Yesterday we go",
+"Yesterday we went",
+"Use past tense with yesterday."
+);
+
+
+rule(
+/bexpenses is\b/gi,
+"expenses are",
+"expenses is",
+"expenses are",
+"Expenses is plural."
+);
+
+
+rule(
+/bcollections is\b/gi,
+"collections are",
+"collections is",
+"collections are",
+"Collections is plural."
+);
+
+
+rule(
+/bpayments is\b/gi,
+"payments are",
+"payments is",
+"payments are",
+"Payments is plural."
+);
+
+
+rule(
+/bthere is many\b/gi,
+"there are many",
+"there is many",
+"there are many",
+"Use are with plural nouns."
+);
+
+
+rule(
+/bpeople is\b/gi,
+"people are",
+"people is",
+"people are",
+"People is plural."
+);
+
+
+rule(
+/binformations\b/gi,
+"information",
+"informations",
+"information",
+"Information is uncountable."
+);
+
+
+rule(
+/badvices\b/gi,
+"advice",
+"advices",
+"advice",
+"Advice is uncountable."
+);
+
+
+rule(
+/bfurnitures\b/gi,
+"furniture",
+"furnitures",
+"furniture",
+"Furniture is uncountable."
+);
+
+
+rule(
+/bi have went\b/gi,
+"I have gone",
+"I have went",
+"I have gone",
+"Use gone after have."
+);
+
+
+rule(
+/bi have saw\b/gi,
+"I have seen",
+"I have saw",
+"I have seen",
+"Use seen after have."
+);
+
+
+rule(
+/bi have did\b/gi,
+"I have done",
+"I have did",
+"I have done",
+"Use done after have."
+);
+
+
+rule(
+/bkindly please\b/gi,
+"please",
+"kindly please",
+"please",
+"Use either kindly or please."
+);
+
+
+rule(
+/breturn back\b/gi,
+"return",
+"return back",
+"return",
+"Return already means go back."
+);
+
+
+rule(
+/brevert back\b/gi,
+"reply",
+"revert back",
+"reply",
+"Reply is clearer in everyday business English."
+);
+
+
+rule(
+/bcope up with\b/gi,
+"cope with",
+"cope up with",
+"cope with",
+"The standard phrase is cope with."
+);
+
+
+rule(
+/bbase on\b/gi,
+"based on",
+"base on",
+"based on",
+"Use based on."
+);
+
+
+rule(
+/bas per checking\b/gi,
+"upon checking",
+"as per checking",
+"upon checking",
+"Upon checking sounds more natural."
+);
+
+
+rule(
+/bfor checking\b/gi,
+"for review",
+"for checking",
+"for review",
+"For review is usually more natural in business English."
+);
+
+
+rule(
+/bneed to discussed\b/gi,
+"need to discuss",
+"need to discussed",
+"need to discuss",
+"Use the base verb after to."
+);
+
+
+rule(
+/bneed to submitted\b/gi,
+"need to submit",
+"need to submitted",
+"need to submit",
+"Use the base verb after to."
+);
+
+
+rule(
+/bcan able to\b/gi,
+"can",
+"can able to",
+"can",
+"Use can or be able to, not both."
+);
+
+
+rule(
+/bregarding about\b/gi,
+"regarding",
+"regarding about",
+"regarding",
+"Regarding does not need about."
+);
+
+
+rule(
+/bdespite of\b/gi,
+"despite",
+"despite of",
+"despite",
+"Use despite or in spite of."
+);
+
+
+rule(
+/bexplain me\b/gi,
+"explain to me",
+"explain me",
+"explain to me",
+"Use explain to someone."
+);
+
+
+rule(
+/bgo to office\b/gi,
+"go to the office",
+"go to office",
+"go to the office",
+"Use the before office in this context."
+);
+
+
+rule(
+/bwent to office\b/gi,
+"went to the office",
+"went to office",
+"went to the office",
+"Use the before office."
+);
+
+
+text=
+text
+.replace(/\s+([,.!?])/g,"$1")
+.replace(/\s{2,}/g," ")
+.trim();
+
+
+if(text){
+
+text=
+text.charAt(0).toUpperCase()+
+text.slice(1);
+
+}
+
+
+if(
+text &&
+!/[.!?]$/.test(text)
+){
+
+text+=".";
+
+}
+
+
+return{
+
+corrected:text,
+
+explanation:
+notes.length
+?
+notes.join("<br><br>")
+:
+"No common rule-based error was detected. The sentence may still have errors outside this offline rule list."
+
+};
+
+}
+
+
+function grammarCoach(){
+
+const text=
+document
+.getElementById("freeGrammar")
+.value
+.trim();
+
+const box=
+document
+.getElementById("grammarCoachResult");
+
+box.classList.remove("hidden");
+
+if(!text){
+
+box.textContent=
+"Please type a sentence first.";
+
+return;
+
+}
+
+const g=
+runGrammarRules(text);
+
+box.innerHTML=
+"<b>Corrected:</b><br>"+
+esc(g.corrected)+
+"<br><br><b>Explanation:</b><br>"+
+g.explanation;
+
+practice();
+
+}
+
+
+function grammarExample(){
+
+document
+.getElementById("freeGrammar")
+.value=
+"Yesterday I go to office and discussed about the payment. The expenses is more higher than our collections.";
+
+grammarCoach();
+
+}
+
+
+function clearGrammar(){
+
+document.getElementById("freeGrammar").value="";
+
+document
+.getElementById("grammarCoachResult")
+.classList.add("hidden");
+
+}
+
+
+/* =========================
+   GRAMMAR QUIZ
+========================= */
+
+const grammarSubjects=[
+
+["I","go","went"],
+["We","go","went"],
+["She","send","sent"],
+["He","submit","submitted"],
+["They","review","reviewed"],
+["The team","discuss","discussed"],
+["My manager","approve","approved"],
+["The accountant","prepare","prepared"],
+["The supervisor","check","checked"],
+["Our department","finish","finished"],
+["The customer","call","called"],
+["The supplier","send","sent"]
+
+];
+
+
+const grammarObjects=[
+
+"the report",
+"the payment",
+"the request",
+"the schedule",
+"the issue",
+"the invoice",
+"the email",
+"the documents",
+"the budget",
+"the reconciliation",
+"the supporting files",
+"the expense report",
+"the bank statement",
+"the collection summary",
+"the audit schedule"
+
+];
+
+
+const grammarTimes=[
+
+"yesterday",
+"last week",
+"this morning",
+"on Monday",
+"two days ago",
+"last Friday",
+"earlier today",
+"last month"
+
+];
+
+
+function newGrammarQuiz(){
+
+const triple=
+pick(grammarSubjects);
+
+const subject=triple[0];
+const verb=triple[1];
+const past=triple[2];
+
+const object=
+pick(grammarObjects);
+
+const time=
+pick(grammarTimes);
+
+const correct=
+subject+
+" "+
+past+
+" "+
+object+
+" "+
+time+
+".";
+
+const wrong1=
+subject+
+" "+
+verb+
+" "+
+object+
+" "+
+time+
+".";
+
+const wrong2=
+subject+
+" did "+
+past+
+" "+
+object+
+" "+
+time+
+".";
+
+let choices=[
+correct,
+wrong1,
+wrong2
+];
+
+choices.sort(
+()=>Math.random()-.5
+);
+
+const answer=
+choices.indexOf(correct);
+
+document
+.getElementById("grammarQuestion")
+.textContent=
+"Choose the correct sentence:";
+
+const area=
+document.getElementById("grammarChoices");
+
+area.innerHTML="";
+
+document
+.getElementById("grammarQuizResult")
+.classList.add("hidden");
+
+
+choices.forEach(
+(choice,index)=>{
+
+const button=
+document.createElement("button");
+
+button.className="choice";
+button.textContent=choice;
+
+button.onclick=()=>{
+
+const box=
+document.getElementById("grammarQuizResult");
+
+box.classList.remove("hidden");
+
+state.total++;
+
+if(index===answer){
+
+state.correct++;
+
+button.classList.add("correct");
+
+box.innerHTML=
+"<b>Correct!</b> Use simple past with a finished past time.";
+
+}else{
+
+button.classList.add("wrong");
+
+box.innerHTML=
+"<b>Not quite.</b><br>Correct: "+
+esc(correct);
+
+}
+
+save();
+practice();
+
+};
+
+area.appendChild(button);
+
+}
+);
+
+}
+
+
+/* =========================
+   STORY LIBRARY
+========================= */
+
+const storyLibrary={
+
+easy:[
+
+{
+title:"A Busy Morning",
+text:"Lina woke up earlier than usual because she had several things to do before work. She prepared breakfast, packed her bag, and checked her messages. On the way to the office, traffic moved slowly, so she sent a short message to her coworker. She arrived ten minutes before the meeting and had enough time to organize her notes. Lina felt relieved because she had planned her morning carefully.",
+words:["usual","packed","organize","relieved"],
+question:"Why did Lina wake up early?",
+correct:"She had several things to do before work.",
+wrong:["She wanted to go shopping.","She was on vacation."]
+},
+
+{
+title:"At the Grocery Store",
+text:"Ben went to the grocery store after work. He needed vegetables, milk, bread, and fruit for the week. Before putting anything in his basket, he compared prices and checked the expiry dates. One item was more expensive than he expected, so he chose another brand. At the cashier, he realized he had saved enough money to buy coffee too.",
+words:["compared","expiry","brand","realized"],
+question:"Why did Ben choose another brand?",
+correct:"One item was too expensive.",
+wrong:["He forgot his wallet.","The store was closing."]
+},
+
+{
+title:"A New Neighbor",
+text:"Maya noticed that a new family had moved into the house next door. In the afternoon, she introduced herself and brought a small box of pastries. The new neighbor thanked her and invited her inside for a short conversation. They talked about the neighborhood, nearby stores, and transportation. Maya was happy because the family seemed friendly.",
+words:["introduced","neighbor","invited","nearby"],
+question:"What did Maya bring?",
+correct:"A small box of pastries.",
+wrong:["A large suitcase.","A school book."]
+},
+
+{
+title:"Lunch with a Coworker",
+text:"Ella and her coworker decided to have lunch at a small restaurant near their office. The restaurant was busy, but they found a table near the window. Ella ordered chicken and rice, while her coworker ordered noodles. They talked about work for a few minutes, then changed the subject and discussed their weekend plans. The short break helped both of them feel more relaxed before returning to work.",
+words:["decided","ordered","subject","relaxed"],
+question:"Why did the lunch break help them?",
+correct:"It helped them feel more relaxed.",
+wrong:["They finished all their work.","They went home early."]
+},
+
+{
+title:"A Rainy Afternoon",
+text:"Nina planned to walk home after visiting a friend, but heavy rain started suddenly. She did not have an umbrella, so she waited under the roof of a small shop. After ten minutes, the rain became even stronger. Nina checked a transport app and booked a ride home. She arrived safely and decided to keep a small umbrella in her bag in the future.",
+words:["suddenly","umbrella","stronger","future"],
+question:"What did Nina decide to carry in the future?",
+correct:"A small umbrella.",
+wrong:["A large bag.","An extra pair of shoes."]
+},
+
+{
+title:"Buying a Birthday Gift",
+text:"Mark wanted to buy a birthday gift for his sister. He visited several stores but could not decide what to buy. Finally, he found a simple handbag that matched his sister's favorite color. Before paying, he asked the salesperson if the bag could be exchanged. The salesperson explained the store policy, and Mark kept the receipt after buying the gift.",
+words:["matched","exchanged","policy","receipt"],
+question:"Why did Mark keep the receipt?",
+correct:"He might need it if the gift was exchanged.",
+wrong:["He wanted to return to work.","He needed to buy food."]
+},
+
+{
+title:"A Phone Call",
+text:"Grace received a call from an unfamiliar number while she was cooking dinner. She answered politely and learned that the caller was from a delivery company. The driver could not find her building. Grace explained the nearest landmark and gave simple directions. A few minutes later, the driver arrived, and Grace received her package.",
+words:["unfamiliar","delivery","landmark","directions"],
+question:"Why did the driver call Grace?",
+correct:"The driver could not find her building.",
+wrong:["The package was lost.","Grace ordered the wrong food."]
+},
+
+{
+title:"Waiting at the Clinic",
+text:"Peter arrived at the clinic fifteen minutes before his appointment. The receptionist told him that the doctor was running late because of an emergency. Peter decided to wait. He read a short article on his phone and answered a few messages. After thirty minutes, the nurse called his name. Peter appreciated that the clinic had informed him about the delay.",
+words:["appointment","emergency","delay","appreciated"],
+question:"Why was the doctor running late?",
+correct:"There was an emergency.",
+wrong:["The clinic was closed.","Peter arrived too early."]
+},
+
+{
+title:"A Simple Favor",
+text:"Carla was carrying several boxes when she reached the office door. Her coworker noticed that her hands were full and opened the door for her. Carla thanked him and asked if he could help her carry one box to the meeting room. He agreed, and together they finished the task quickly. Carla appreciated the small act of kindness.",
+words:["noticed","agreed","quickly","kindness"],
+question:"What did Carla's coworker do?",
+correct:"He helped her with the boxes.",
+wrong:["He left the office.","He moved the meeting."]
+},
+
+{
+title:"Missing the Bus",
+text:"Leo left home later than usual and saw his bus leaving as he reached the stop. The next bus would arrive in twenty minutes. Instead of becoming upset, Leo used the time to buy coffee and check his schedule. When the next bus arrived, he was ready. He learned that leaving home ten minutes earlier would make his mornings easier.",
+words:["usual","schedule","upset","earlier"],
+question:"What did Leo learn?",
+correct:"He should leave home earlier.",
+wrong:["He should stop drinking coffee.","He should never take the bus."]
+}
+
+],
+
+
+intermediate:[
+
+{
+title:"A Difficult Conversation",
+text:"Daniel needed to speak with a coworker who had missed two important deadlines. He did not want the conversation to sound angry, so he prepared what he wanted to say. He began by explaining how the delays affected the rest of the team. Then he asked whether there was a problem preventing the coworker from finishing the tasks. The coworker explained that several priorities had changed at the same time. Together, they agreed on a clearer schedule and a simple way to report progress. Daniel learned that a calm conversation can solve more than repeated reminders.",
+words:["deadlines","preventing","priorities","progress"],
+question:"Why did Daniel prepare before the conversation?",
+correct:"He wanted to speak calmly and clearly.",
+wrong:["He wanted to resign.","He wanted to cancel the tasks."]
+},
+
+{
+title:"A Delayed Flight",
+text:"Sara arrived at the airport three hours before her international flight. While she was waiting near the gate, an announcement said the flight would be delayed because of bad weather. At first, she felt frustrated because she had arranged a hotel pickup at her destination. Instead of worrying, she contacted the hotel, changed the pickup time, and bought dinner. The delay lasted almost four hours, but Sara felt less stressed because she handled the important arrangements early.",
+words:["announcement","frustrated","arranged","destination"],
+question:"Why did Sara contact the hotel?",
+correct:"She needed to change her pickup time.",
+wrong:["She wanted to book another room.","She lost her passport."]
+},
+
+{
+title:"Learning to Speak Up",
+text:"For several months, Claire rarely spoke during team meetings even when she had useful ideas. She worried about making grammar mistakes and often waited until the meeting ended before sharing her thoughts with a coworker. One day, she decided to prepare two simple sentences before the meeting. When the discussion reached her topic, she used those sentences to explain her concern. Her manager asked a follow-up question, and Claire answered slowly. The experience was not perfect, but it showed her that clear ideas matter more than perfect English.",
+words:["rarely","discussion","follow-up","experience"],
+question:"What helped Claire speak during the meeting?",
+correct:"She prepared two simple sentences.",
+wrong:["She memorized a long speech.","She avoided the meeting."]
+},
+
+{
+title:"Choosing a Hotel",
+text:"Rachel was planning a short family trip and needed to choose a hotel. One hotel was cheaper but far from the places they wanted to visit. Another hotel cost more but was close to public transportation and several restaurants. Rachel compared the total transportation cost, travel time, and convenience. She eventually chose the second hotel because it would make the trip easier for everyone. She realized that the lowest price is not always the best value.",
+words:["convenience","eventually","transportation","value"],
+question:"Why did Rachel choose the more expensive hotel?",
+correct:"It was more convenient for the family.",
+wrong:["It had no transportation nearby.","It was the cheapest option."]
+},
+
+{
+title:"Solving a Billing Problem",
+text:"Miguel received a bill that was higher than expected. Instead of paying immediately, he checked the details and found a charge he did not recognize. He called customer service and politely explained the issue. The representative reviewed the account and discovered that the charge had been added by mistake. The company corrected the bill and sent an updated statement. Miguel was glad that he had reviewed the bill carefully before paying.",
+words:["recognize","representative","corrected","statement"],
+question:"What caused the high bill?",
+correct:"A charge was added by mistake.",
+wrong:["Miguel paid twice.","The bill was for another person."]
+},
+
+{
+title:"Preparing for an Interview",
+text:"Amy had an interview for a position she really wanted. She had strong experience, but she felt nervous about answering questions in English. Instead of trying to memorize long answers, she wrote down several key points about her experience, strengths, and goals. She practiced explaining each point in simple sentences. During the interview, she paused when necessary and focused on giving clear examples. Amy still made a few small mistakes, but she communicated her ideas successfully.",
+words:["memorize","strengths","necessary","successfully"],
+question:"What did Amy practice before the interview?",
+correct:"She practiced explaining key points in simple sentences.",
+wrong:["She memorized every possible answer.","She canceled the interview."]
+},
+
+{
+title:"A Change of Plans",
+text:"Kevin planned to spend Saturday outdoors with his family, but the weather forecast predicted heavy rain. At first, everyone felt disappointed. Instead of canceling the day completely, Kevin suggested visiting a museum and having lunch at a nearby restaurant. The family agreed, and they ended up enjoying the unexpected plan. Kevin realized that being flexible can sometimes lead to experiences that are just as enjoyable as the original plan.",
+words:["forecast","disappointed","suggested","flexible"],
+question:"What did the family do instead?",
+correct:"They visited a museum and had lunch.",
+wrong:["They stayed outdoors in the rain.","They canceled the entire weekend."]
+},
+
+{
+title:"Handling a Complaint",
+text:"A customer called a small company because an order had arrived later than promised. The employee who answered the call listened without interrupting and apologized for the inconvenience. She checked the delivery record and discovered that a transportation problem had caused the delay. Instead of making excuses, she explained what had happened and offered two possible solutions. The customer chose to wait one more day for delivery. The conversation ended calmly because the employee listened carefully and gave the customer a clear choice.",
+words:["interrupting","inconvenience","solutions","promised"],
+question:"Why did the conversation end calmly?",
+correct:"The employee listened and offered clear solutions.",
+wrong:["The employee ignored the complaint.","The customer canceled everything immediately."]
+},
+
+{
+title:"Joining a New Team",
+text:"When Julia joined a new department, she understood the technical part of her job but did not know how the team normally worked together. During her first week, she observed how meetings were conducted, asked questions about deadlines, and wrote down important procedures. She also introduced herself to coworkers from other departments. By the end of the month, she felt more comfortable because she had learned both the formal process and the team's working style.",
+words:["conducted","procedures","observed","formal"],
+question:"How did Julia learn about the team?",
+correct:"She observed, asked questions, and took notes.",
+wrong:["She refused to attend meetings.","She worked without speaking to anyone."]
+},
+
+{
+title:"Saving for a Goal",
+text:"Andre wanted to save money for a family vacation, but he often spent small amounts without noticing how quickly they added up. He started recording his daily expenses for one month. At the end of the month, he discovered that food delivery and unnecessary online purchases were taking a large part of his budget. He did not remove all enjoyable spending. Instead, he set a weekly limit and transferred a fixed amount to savings every payday. After several months, the progress encouraged him to continue.",
+words:["recording","unnecessary","limit","encouraged"],
+question:"What helped Andre save more money?",
+correct:"He tracked expenses and set spending limits.",
+wrong:["He stopped paying all bills.","He borrowed money every month."]
+}
+
+],
+
+
+upper:[
+
+{
+title:"The Cost of Delayed Decisions",
+text:"A department had repeatedly raised concerns about a process that was causing delays across several teams. Each time the issue was escalated, management requested more information but did not set a deadline for a final decision. As a result, temporary solutions became permanent habits, employees spent more time on manual work, and other departments began to experience the same problem. During a management meeting, one team leader presented the issue differently. Instead of describing only the problem, she summarized the operational impact, estimated the cost of continued delays, and proposed three possible actions. The discussion became more focused because the decision-makers could clearly see the consequences of doing nothing. The experience demonstrated that effective escalation is not only about identifying a concern; it is also about presenting the impact and giving management practical choices.",
+words:["escalated","operational","consequences","practical"],
+question:"What made the second presentation more effective?",
+correct:"It explained the impact and proposed practical actions.",
+wrong:["It used more difficult words.","It avoided mentioning the problem."]
+},
+
+{
+title:"Building Confidence Through Practice",
+text:"Improving spoken English rarely happens because of one long study session. Progress usually comes from repeated exposure, active use, and small corrections over time. A learner who reads for ten minutes, listens to natural speech, and speaks aloud every day may develop stronger fluency than someone who studies grammar rules for several hours only once a week. Confidence also grows when the learner becomes comfortable making small mistakes. Instead of stopping after every error, effective learners often finish their thought first and review the sentence afterward. This allows them to practice communication and accuracy separately. Over time, familiar sentence patterns become easier to produce without translating every word in the learner's head.",
+words:["exposure","fluency","accuracy","familiar"],
+question:"What is one benefit of finishing a thought before correcting mistakes?",
+correct:"It separates communication practice from accuracy practice.",
+wrong:["It guarantees perfect grammar.","It removes the need to study."]
+},
+
+{
+title:"Managing Cash Flow Pressure",
+text:"A company can appear profitable on paper and still experience serious cash flow pressure. Revenue may already be recorded, but the actual collection can arrive weeks or months later. At the same time, payroll, supplier payments, loan obligations, taxes, and other operating costs continue to fall due. When this happens, management needs more than a list of unpaid invoices. A useful cash flow discussion should show expected collections, scheduled payments, timing gaps, and the actions required to protect critical operations. It should also distinguish temporary timing issues from structural problems, such as consistently spending more cash than the business generates. Clear reporting helps management decide which payments to prioritize, which collections to accelerate, and which expenses can be delayed without harming operations.",
+words:["obligations","structural","prioritize","accelerate"],
+question:"Why is a list of unpaid invoices not enough?",
+correct:"Management also needs timing, payment, and action information.",
+wrong:["Invoices are never useful.","Cash flow does not depend on collections."]
+},
+
+{
+title:"Why Clear Escalation Matters",
+text:"Escalating a problem does not automatically guarantee that management will act. A concern is easier to evaluate when it is presented with clear facts, business impact, urgency, and possible solutions. For example, saying that a department is slow may sound subjective. Explaining that three delayed approvals caused two supplier payments to miss the scheduled cycle gives decision-makers more useful information. Effective escalation also identifies what decision is required and when it is needed. This prevents an issue from being repeatedly discussed without a clear outcome. Strong communication does not require complicated vocabulary; it requires a logical structure that helps other people understand the situation and make a decision.",
+words:["subjective","evaluate","urgency","outcome"],
+question:"What makes escalation more useful?",
+correct:"Clear facts, impact, urgency, and possible solutions.",
+wrong:["Using complicated vocabulary.","Avoiding specific examples."]
+},
+
+{
+title:"Separating Accounting and Finance Responsibilities",
+text:"In many organizations, accounting and finance work closely together, but their responsibilities are not exactly the same. Accounting focuses mainly on recording transactions, maintaining accurate books, reconciling balances, preparing financial statements, and supporting compliance and audits. Finance is usually more focused on cash planning, funding, banking relationships, investment decisions, budgeting, and forward-looking financial strategy. When the responsibilities are unclear, employees may duplicate work or important tasks may be left without a clear owner. A well-designed structure does not prevent collaboration. Instead, it defines accountability while allowing both functions to exchange information and support management decisions.",
+words:["reconciling","compliance","strategy","accountability"],
+question:"Why is it useful to define accounting and finance responsibilities clearly?",
+correct:"It reduces duplication and creates clear accountability.",
+wrong:["It prevents the teams from communicating.","It removes the need for management."]
+},
+
+{
+title:"The Importance of Good Follow-Up",
+text:"Follow-up is often treated as a minor administrative task, but it can have a major effect on execution. A request may have been approved in principle, yet nothing happens if no one confirms the next action, deadline, and responsible person. Good follow-up does not mean repeatedly sending the same message. It means checking whether the expected action was completed, identifying obstacles, and escalating only when necessary. A simple tracking system can make follow-up more effective by showing the owner, due date, current status, and next step. This reduces the risk that important items disappear inside long email threads or meeting notes.",
+words:["execution","obstacles","tracking","responsible"],
+question:"What makes follow-up effective?",
+correct:"Tracking the owner, deadline, status, and next step.",
+wrong:["Sending the same message repeatedly.","Avoiding deadlines."]
+},
+
+{
+title:"Learning from a Failed Project",
+text:"Not every unsuccessful project is a complete waste. A failed initiative can reveal weaknesses in planning, assumptions, decision-making, or execution that might otherwise remain hidden. The important question is whether the organization studies those lessons objectively. Blaming individuals too quickly may discourage people from reporting problems early. On the other hand, ignoring accountability can allow the same mistakes to happen again. A useful review separates the facts from personal opinions, identifies what was controllable, and documents what should change in the next project. In this way, failure becomes a source of information rather than simply a negative result.",
+words:["initiative","assumptions","objectively","accountability"],
+question:"How can an organization learn from a failed project?",
+correct:"By reviewing facts and identifying what should change.",
+wrong:["By ignoring the failure.","By blaming one person immediately."]
+},
+
+{
+title:"The Value of Simple Communication",
+text:"Professionals sometimes believe that complex language makes them sound more competent. In reality, complicated sentences can make an important message harder to understand. This is especially true when discussing financial risks, operational problems, or urgent decisions. Clear communication usually follows a simple structure: what happened, why it matters, what action is needed, and when the action should occur. This structure helps listeners focus on the decision rather than trying to decode the language. Simple English is not weak English. When used accurately, it can be more persuasive because the meaning is direct and difficult to misunderstand.",
+words:["competent","structure","decode","persuasive"],
+question:"Why can simple English be more persuasive?",
+correct:"The meaning is direct and easier to understand.",
+wrong:["It avoids important information.","It uses more technical words."]
+},
+
+{
+title:"Managing Competing Priorities",
+text:"A common workplace challenge occurs when several urgent tasks arrive at the same time. Trying to complete everything immediately can reduce quality and create unnecessary stress. A better approach is to identify which tasks have fixed deadlines, which tasks affect other people, and which tasks can reasonably wait. When priorities are still unclear, employees should not simply guess. Asking a manager to confirm the order of priority can prevent wasted effort. Good prioritization is not about doing less work; it is about using limited time on the activities that have the greatest immediate impact.",
+words:["competing","reasonably","priority","impact"],
+question:"What should an employee do when priorities remain unclear?",
+correct:"Ask the manager to confirm the order of priority.",
+wrong:["Ignore all deadlines.","Try to finish everything at the same moment."]
+},
+
+{
+title:"A Stronger Meeting Update",
+text:"A useful meeting update should help the group understand what has been completed, what remains open, and whether any support or decision is required. Simply saying that an item is ongoing often creates more questions than answers. A stronger update includes the current status, the reason for any delay, the next action, and the expected completion date. If a blocker depends on another department, that should also be stated clearly. This approach makes meetings shorter and more productive because the discussion focuses on exceptions and decisions rather than repeating information that everyone already knows.",
+words:["blocker","completion","exceptions","productive"],
+question:"What should a strong meeting update include?",
+correct:"Status, reason for delay, next action, and expected completion.",
+wrong:["Only the word ongoing.","Every detail from the beginning of the project."]
+}
+
+]
+
+};
+
+
+/* =========================
+   GENERATED STORIES
+========================= */
+
+const storyNames=[
+
+"Anna",
+"Marco",
+"Lisa",
+"Daniel",
+"Mia",
+"Sofia",
+"James",
+"Grace",
+"Carlo",
+"Ella",
+"Rachel",
+"Peter",
+"Julia",
+"Andre",
+"Nina",
+"Kevin",
+"Claire",
+"Ben",
+"Amy",
+"Leo"
+
+];
+
+
+const storyPlaces=[
+
+"the office",
+"a market",
+"a bank",
+"a hotel",
+"an airport",
+"a training center",
+"a restaurant",
+"a clinic",
+"a mall",
+"a school",
+"a coffee shop",
+"a supermarket",
+"a meeting room",
+"a reception area",
+"a small business"
+
+];
+
+
+const storyTasks=[
+
+"prepared an important report",
+"asked for help",
+"reviewed several documents",
+"followed up on a payment",
+"made an appointment",
+"helped a coworker",
+"checked a schedule",
+"solved a customer concern",
+"organized a meeting",
+"compared several options",
+"confirmed an important deadline",
+"reviewed a budget",
+"called a supplier",
+"prepared a presentation",
+"checked an invoice"
+
+];
+
+
+const storyProblems=[
+
+"the process took longer than expected",
+"some information was missing",
+"there was an unexpected delay",
+"the schedule suddenly changed",
+"another person needed more time",
+"the first option was unavailable",
+"the responsible person could not be reached",
+"an important document was incomplete",
+"the system was temporarily unavailable",
+"the original plan was no longer practical"
+
+];
+
+
+const storySolutions=[
+
+"asked clear questions and took notes",
+"called the responsible person and followed up",
+"looked for another practical option",
+"explained the situation calmly",
+"organized the remaining tasks by priority",
+"asked for a clear deadline",
+"requested the missing information",
+"prepared an alternative plan",
+"gave the team a short update",
+"confirmed the next action"
+
+];
+
+
+const storyEnds=[
+
+"finished the task before going home",
+"sent a short update to the team",
+"prepared for the next day",
+"felt more confident after solving the problem",
+"learned something useful from the experience",
+"made a note to prevent the same problem",
+"shared the solution with a coworker",
+"completed the most urgent part of the task",
+"felt relieved when the issue was resolved",
+"created a simple checklist for next time"
+
+];
+
+
+function generatedStory(level){
+
+const name=
+pick(storyNames);
+
+const place=
+pick(storyPlaces);
+
+const task=
+pick(storyTasks);
+
+const problem=
+pick(storyProblems);
+
+const solution=
+pick(storySolutions);
+
+const ending=
+pick(storyEnds);
+
+
+let text=
+
+name+
+" had an important task at "+
+place+
+". "+
+name+
+" "+
+task+
+". During the day, "+
+problem+
+". Instead of becoming frustrated, "+
+name+
+" "+
+solution+
+". After that, the situation became easier to manage, and "+
+name+
+" "+
+ending+
+".";
+
+
+if(level==="intermediate"){
+
+text+=
+" The experience reminded "+
+name+
+" that good communication and early follow-up can prevent a small problem from becoming a larger one.";
+
+}
+
+
+if(level==="upper"){
+
+text+=
+" Looking back, "+
+name+
+" realized that the most useful part of the experience was not simply solving the immediate problem, but understanding how clearer expectations, better planning, and earlier follow-up could prevent the same issue from happening again.";
+
+}
+
+
+return{
+
+title:"Practice Story",
+
+text:text,
+
+words:[
+"frustrated",
+"manage",
+"communication",
+"expectations"
+],
+
+question:
+"What helped "+
+name+
+" manage the problem?",
+
+correct:
+name+
+" used a practical and calm approach.",
+
+wrong:[
+name+
+" ignored the problem.",
+name+
+" left immediately."
+]
+
+};
+
+}
+
+
+/* =========================
+   STORY DISPLAY
+========================= */
+
+let currentStory={};
+
+
+function newStory(){
+
+const level=
+document
+.getElementById("storyLevel")
+.value;
+
+
+let story;
+
+
+if(Math.random()<0.7){
+
+story=
+pick(storyLibrary[level]);
+
+}else{
+
+story=
+generatedStory(level);
+
+}
+
+
+currentStory=story;
+
+
+document
+.getElementById("storyTitle")
+.textContent=
+story.title;
+
+
+document
+.getElementById("storyText")
+.textContent=
+story.text;
+
+
+document
+.getElementById("storyWords")
+.innerHTML=
+story.words
+.map(
+word=>
+'<span class="badge">'+
+esc(word)+
+'</span>'
+)
+.join("");
+
+
+document
+.getElementById("storyQuestion")
+.textContent=
+story.question;
+
+
+let options=[
+story.correct,
+story.wrong[0],
+story.wrong[1]
+];
+
+
+options.sort(
+()=>Math.random()-.5
+);
+
+
+const area=
+document
+.getElementById("storyChoices");
+
+area.innerHTML="";
+
+
+document
+.getElementById("storyResult")
+.classList.add("hidden");
+
+
+options.forEach(
+option=>{
+
+const button=
+document.createElement("button");
+
+button.className="choice";
+button.textContent=option;
+
+
+button.onclick=()=>{
+
+const box=
+document
+.getElementById("storyResult");
+
+box.classList.remove("hidden");
+
+
+if(option===story.correct){
+
+button.classList.add("correct");
+
+box.textContent=
+"Correct!";
+
+}else{
+
+button.classList.add("wrong");
+
+box.textContent=
+"Not quite. Read the story again.";
+
+}
+
+practice();
+
+};
+
+
+area.appendChild(button);
+
+}
+);
+
+}
+
+
+/* =========================
+   STORY RETELLING
+========================= */
+
+function checkRetell(){
+
+const text=
+document
+.getElementById("retellAnswer")
+.value
+.trim();
+
+
+const box=
+document
+.getElementById("retellResult");
+
+
+box.classList.remove("hidden");
+
+
+if(!text){
+
+box.textContent=
+"Please retell the story first.";
+
+return;
+
+}
+
+
+const g=
+runGrammarRules(text);
+
+
+box.innerHTML=
+
+"<b>Your corrected retelling:</b><br>"+
+esc(g.corrected)+
+"<br><br>"+
+g.explanation+
+"<br><br><b>Retelling tip:</b> Try to include who, what happened, the problem, the solution, and the result.";
+
+
+practice();
+
+}
+
+
+/* =========================
+   PRONUNCIATION
+========================= */
+
+const pronStarts=[
+
+"Please review",
+"Could you check",
+"Please confirm",
+"Could you send",
+"I need to clarify",
+"I would like to discuss",
+"Please update",
+"Could you explain",
+"I will follow up on",
+"Please prepare",
+"Could you verify",
+"I need to submit",
+"Please prioritize",
+"Could you approve",
+"Please provide",
+"I would like to confirm",
+"Could you clarify",
+"Please complete",
+"I need to review",
+"Could you update"
+
+];
+
+
+const pronObjects=[
+
+"the report",
+"the payment",
+"the invoice",
+"the schedule",
+"the outstanding items",
+"the email",
+"the budget",
+"the reconciliation",
+"the request",
+"the documents",
+"the deadline",
+"the collection status",
+"the audit requirement",
+"the supplier balance",
+"the supporting documents",
+"the payment schedule",
+"the meeting notes",
+"the bank balance",
+"the monthly report",
+"the action items"
+
+];
+
+
+const pronEnds=[
+
+"today",
+"this afternoon",
+"before the meeting",
+"by tomorrow",
+"as soon as possible",
+"before Friday",
+"when you have time",
+"before the deadline",
+"before the end of the day",
+"before the next meeting",
+"by this afternoon",
+"before we submit the report"
+
+];
+
+
+let currentPron="";
+
+
+function newPronunciation(){
+
+currentPron=
+
+pick(pronStarts)+
+" "+
+pick(pronObjects)+
+" "+
+pick(pronEnds)+
+".";
+
+
+document
+.getElementById("pronPhrase")
+.textContent=
+currentPron;
+
+
+document
+.getElementById("pronHint")
+.textContent=
+"Speak clearly. Stress the important noun and the time phrase.";
+
+}
+
+
+/* =========================
+   WORK ENGLISH
+========================= */
+
+const workBanks={
+
+management:{
+
+issues:[
+"delayed decisions",
+"unclear priorities",
+"slow approvals",
+"cross-department coordination",
+"insufficient follow-up",
+"unclear ownership",
+"repeated escalation without resolution",
+"lack of decision deadlines"
+],
+
+impacts:[
+"affect other departments",
+"delay important actions",
+"increase operational risk",
+"create additional work",
+"make planning difficult",
+"cause repeated follow-up"
+],
+
+actions:[
+"set a clear decision timeline",
+"assign clear owners",
+"review urgent issues weekly",
+"define escalation levels",
+"improve follow-up",
+"set deadlines for management decisions"
+]
+
+},
+
+
+accounting:{
+
+issues:[
+"month-end closing",
+"outstanding reconciliations",
+"aging items",
+"unrecorded transactions",
+"pending supporting documents",
+"intercompany balances",
+"late adjustments",
+"open reconciling items"
+],
+
+impacts:[
+"delay reporting",
+"affect account accuracy",
+"create audit issues",
+"make reconciliation difficult",
+"cause late adjustments",
+"affect financial statement accuracy"
+],
+
+actions:[
+"set earlier cutoffs",
+"follow up with responsible teams",
+"review open items weekly",
+"complete reconciliations earlier",
+"improve document submission",
+"assign owners to aging items"
+]
+
+},
+
+
+cash:{
+
+issues:[
+"cash outflows are higher than inflows",
+"collections are below target",
+"scheduled payments are increasing",
+"some receivables are delayed",
+"cash requirements are concentrated",
+"collection timing is uncertain",
+"large payments are due soon"
+],
+
+impacts:[
+"reduce available cash",
+"affect payment timing",
+"increase funding pressure",
+"limit flexibility",
+"require payment prioritization",
+"create short-term cash pressure"
+],
+
+actions:[
+"accelerate collections",
+"prioritize critical payments",
+"review weekly cash flow",
+"delay non-urgent spending",
+"coordinate collection follow-ups",
+"review the timing of major payments"
+]
+
+},
+
+
+supplier:{
+
+issues:[
+"a payment is still being processed",
+"supporting documents are incomplete",
+"the invoice is under review",
+"the payment missed the cutoff",
+"approval is still pending",
+"the billing amount needs verification"
+],
+
+impacts:[
+"delay supplier payment",
+"affect the release schedule",
+"require additional verification",
+"move payment to the next cycle",
+"cause repeated supplier follow-up"
+],
+
+actions:[
+"complete the missing documents",
+"follow up on approval",
+"include it in the next payment cycle",
+"send an update to the supplier",
+"confirm the final amount",
+"verify the billing details"
+]
+
+},
+
+
+meeting:{
+
+issues:[
+"several items are still ongoing",
+"the report is not yet complete",
+"some departments have not submitted data",
+"there are open reconciling items",
+"some deadlines were missed",
+"several actions are still pending"
+],
+
+impacts:[
+"delay the final report",
+"require additional follow-up",
+"affect the closing timeline",
+"delay management review"
+],
+
+actions:[
+"follow up today",
+"complete the remaining items",
+"provide another update tomorrow",
+"escalate overdue submissions",
+"confirm final deadlines"
+]
+
+},
+
+
+audit:{
+
+issues:[
+"audit schedules are incomplete",
+"supporting documents are missing",
+"some balances need reconciliation",
+"responses are still pending",
+"several audit requests remain open",
+"some explanations need clarification"
+],
+
+impacts:[
+"delay audit completion",
+"create additional audit queries",
+"affect the submission timeline",
+"increase follow-up work"
+],
+
+actions:[
+"assign document owners",
+"complete schedules early",
+"track audit requests daily",
+"escalate overdue responses",
+"prepare supporting explanations"
+]
+
+},
+
+
+team:{
+
+issues:[
+"tasks are not acknowledged",
+"deadlines are repeatedly missed",
+"priorities are unclear",
+"follow-ups are inconsistent",
+"status updates are incomplete",
+"problems are raised too late"
+],
+
+impacts:[
+"affect team coordination",
+"delay other people's work",
+"create repeated follow-up",
+"increase pressure near deadlines",
+"make planning difficult"
+],
+
+actions:[
+"set clear deadlines",
+"acknowledge messages promptly",
+"update task status regularly",
+"raise blockers early",
+"confirm priorities before starting work"
+]
+
+}
+
+};
+
+
+let currentWork={};
+
+
+function newWork(){
+
+const key=
+document
+.getElementById("workType")
+.value;
+
+
+const bank=
+workBanks[key];
+
+
+const issue=
+pick(bank.issues);
+
+const impact=
+pick(bank.impacts);
+
+const action=
+pick(bank.actions);
+
+
+const question=
+
+"Explain this professionally: "+
+issue+
+". Describe how it can "+
+impact+
+", then recommend that the team "+
+action+
+".";
+
+
+const sample=
+
+"One concern is that "+
+issue+
+". This can "+
+impact+
+". I recommend that we "+
+action+
+" so we can address the issue earlier.";
+
+
+currentWork={
+q:question,
+sample:sample
+};
+
+
+document
+.getElementById("workPrompt")
+.textContent=
+question;
+
+
+document
+.getElementById("workResult")
+.classList.add("hidden");
+
+}
+
+
+function showWorkSample(){
+
+const box=
+document
+.getElementById("workResult");
+
+box.classList.remove("hidden");
+
+box.innerHTML=
+"<b>Sample:</b><br>"+
+esc(currentWork.sample);
+
+}
+
+
+function checkWork(){
+
+const text=
+document
+.getElementById("workAnswer")
+.value
+.trim();
+
+
+const box=
+document
+.getElementById("workResult");
+
+
+box.classList.remove("hidden");
+
+
+if(!text){
+
+box.textContent=
+"Please answer first.";
+
+return;
+
+}
+
+
+const g=
+runGrammarRules(text);
+
+
+box.innerHTML=
+
+"<b>Corrected:</b><br>"+
+esc(g.corrected)+
+"<br><br>"+
+g.explanation+
+"<br><br><b>Work structure:</b> Situation → Impact → Recommendation.";
+
+
+practice();
+
+}
+
+
+/* =========================
+   START APP
+========================= */
+
+newDaily();
+newEveryday();
+newGrammarQuiz();
+newStory();
+newPronunciation();
+newWork();
+updateStats();
+
+</script>
+
+</body>
+</html>
