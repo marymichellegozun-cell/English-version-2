@@ -6,10 +6,7 @@
 <title>English Practice Mega Free</title>
 
 <style>
-*{
-  box-sizing:border-box;
-}
-
+*{box-sizing:border-box}
 body{
   margin:0;
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
@@ -17,30 +14,15 @@ body{
   color:#182033;
   padding-bottom:90px;
 }
-
 header{
   background:linear-gradient(135deg,#4d5dfb,#7655e8);
   color:white;
   padding:28px 20px 24px;
   border-radius:0 0 28px 28px;
 }
-
-header h1{
-  margin:0;
-  font-size:28px;
-}
-
-header p{
-  margin:8px 0 0;
-  opacity:.92;
-}
-
-.container{
-  max-width:760px;
-  margin:auto;
-  padding:16px;
-}
-
+header h1{margin:0;font-size:28px}
+header p{margin:8px 0 0;opacity:.92}
+.container{max-width:760px;margin:auto;padding:16px}
 .card{
   background:white;
   border-radius:20px;
@@ -48,67 +30,19 @@ header p{
   margin-bottom:16px;
   box-shadow:0 4px 18px rgba(0,0,0,.06);
 }
-
-h2{
-  margin-top:0;
-}
-
-.big-number{
-  font-size:32px;
-  font-weight:800;
-}
-
-.stats{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:10px;
-}
-
-.stat{
-  background:#f1f3ff;
-  padding:14px 8px;
-  text-align:center;
-  border-radius:15px;
-}
-
+h2{margin-top:0}
 button{
   border:none;
   border-radius:14px;
   padding:13px 16px;
   font-size:16px;
   font-weight:600;
-  cursor:pointer;
   margin:4px 3px;
 }
-
-.primary{
-  background:#4d5dfb;
-  color:white;
-}
-
-.secondary{
-  background:#eef0ff;
-  color:#3944c8;
-}
-
-.green{
-  background:#e8f7ed;
-  color:#187c38;
-}
-
-.orange{
-  background:#fff1df;
-  color:#9a5800;
-}
-
-.red{
-  background:#ffeaea;
-  color:#b92727;
-}
-
-textarea,
-input,
-select{
+.primary{background:#4d5dfb;color:white}
+.secondary{background:#eef0ff;color:#3944c8}
+.green{background:#e8f7ed;color:#187c38}
+textarea,select{
   width:100%;
   padding:14px;
   border-radius:14px;
@@ -117,47 +51,38 @@ select{
   margin:8px 0;
   background:white;
 }
-
-textarea{
-  min-height:115px;
-  resize:vertical;
-}
-
+textarea{min-height:120px}
 .output{
   background:#f7f8ff;
   padding:15px;
   border-radius:14px;
   margin-top:12px;
   line-height:1.6;
-  white-space:pre-wrap;
 }
-
 .example{
   font-size:19px;
   line-height:1.55;
   font-weight:600;
   margin:14px 0;
 }
-
-.small{
-  font-size:13px;
-  color:#687086;
+.small{font-size:13px;color:#687086}
+.hidden{display:none}
+.success{
+  background:#edf9f0;
+  color:#176b32;
+  padding:15px;
+  border-radius:14px;
+  margin-top:12px;
+  line-height:1.55;
 }
-
-.tag{
-  display:inline-block;
-  background:#eef0ff;
-  color:#404bc4;
-  padding:6px 10px;
-  margin:3px;
-  border-radius:99px;
-  font-size:13px;
+.warning{
+  background:#fff5e8;
+  color:#8b5100;
+  padding:15px;
+  border-radius:14px;
+  margin-top:12px;
+  line-height:1.55;
 }
-
-.hidden{
-  display:none;
-}
-
 .bottom-nav{
   position:fixed;
   bottom:0;
@@ -170,7 +95,6 @@ textarea{
   z-index:100;
   padding-bottom:env(safe-area-inset-bottom);
 }
-
 .bottom-nav button{
   flex:1;
   min-width:72px;
@@ -181,359 +105,146 @@ textarea{
   border-radius:0;
   font-size:12px;
 }
-
 .bottom-nav button.active{
   color:#4856e8;
   font-weight:800;
   background:#f4f5ff;
 }
-
-.progress-bar{
-  width:100%;
-  height:12px;
-  background:#e8eaf2;
-  border-radius:20px;
-  overflow:hidden;
-}
-
-.progress{
-  height:100%;
-  background:#4d5dfb;
-  width:0%;
-}
-
-.story{
-  font-size:18px;
-  line-height:1.8;
-}
-
-.tip{
-  padding:12px;
-  background:#fff9e9;
-  border-radius:12px;
-  margin-top:10px;
-}
-
-.success{
-  background:#edf9f0;
-  color:#176b32;
-  padding:14px;
-  border-radius:12px;
-  margin-top:10px;
-}
-
-.warning{
-  background:#fff5e8;
-  color:#8b5100;
-  padding:14px;
-  border-radius:12px;
-  margin-top:10px;
-}
-
-@media(max-width:500px){
-  header h1{
-    font-size:25px;
-  }
-
-  .stats{
-    grid-template-columns:repeat(3,1fr);
-  }
-
-  .card{
-    padding:16px;
-  }
-}
+.story{font-size:18px;line-height:1.8}
 </style>
 </head>
 
 <body>
 
 <header>
-  <h1>English Practice Mega Free</h1>
-  <p>Everyday English • Grammar • Stories • Pronunciation • Work English</p>
+<h1>English Practice Mega Free</h1>
+<p>Everyday English • Grammar • Stories • Pronunciation • Work English</p>
 </header>
 
 <div class="container">
 
 <section id="home" class="page">
+<div class="card">
+<h2>Welcome 👋</h2>
+<p>Practice English for about 15 minutes every day.</p>
+<p>Use the sections below to improve speaking, grammar, pronunciation and workplace English.</p>
+</div>
 
-  <div class="card">
-    <h2>Welcome, Mitch 👋</h2>
-    <p>Practice for about 15 minutes every day. Speak out loud whenever possible.</p>
-
-    <div class="stats">
-      <div class="stat">
-        <div class="big-number" id="daysCount">0</div>
-        <div class="small">Practice Days</div>
-      </div>
-
-      <div class="stat">
-        <div class="big-number" id="practiceCount">0</div>
-        <div class="small">Activities</div>
-      </div>
-
-      <div class="stat">
-        <div class="big-number">10K+</div>
-        <div class="small">Combinations</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="card">
-    <h2>15-Minute Daily Routine</h2>
-
-    <p>3 minutes — Everyday English</p>
-    <p>3 minutes — Grammar</p>
-    <p>3 minutes — Reading Story</p>
-    <p>3 minutes — Pronunciation</p>
-    <p>3 minutes — Work English</p>
-
-    <div class="progress-bar">
-      <div class="progress" id="dailyProgress"></div>
-    </div>
-
-    <p class="small" id="progressText">Start practicing today.</p>
-  </div>
-
-  <div class="card">
-    <h2>Daily Speaking Challenge</h2>
-    <div class="example" id="dailyChallenge"></div>
-
-    <button class="primary" onclick="speakTextById('dailyChallenge')">
-      🔊 Listen
-    </button>
-
-    <button class="secondary" onclick="newChallenge()">
-      New Challenge
-    </button>
-  </div>
-
-  <div class="card">
-    <h2>Today's Goal</h2>
-    <p>Speak naturally. Do not worry about being perfect. Focus on making your sentence clear.</p>
-  </div>
-
+<div class="card">
+<h2>Daily Speaking Challenge</h2>
+<div class="example" id="dailyChallenge"></div>
+<button class="primary" onclick="speakId('dailyChallenge')">🔊 Listen</button>
+<button class="secondary" onclick="newChallenge()">New Challenge</button>
+</div>
 </section>
 
 
 <section id="everyday" class="page hidden">
+<div class="card">
+<h2>Everyday English</h2>
 
-  <div class="card">
-    <h2>Everyday English</h2>
-    <p>Practice natural sentences you can use every day.</p>
+<select id="everydayCategory" onchange="newEveryday()">
+<option value="home">At Home</option>
+<option value="shopping">Shopping</option>
+<option value="restaurant">Restaurant</option>
+<option value="travel">Travel</option>
+<option value="friends">Friends</option>
+</select>
 
-    <select id="everydayCategory" onchange="newEveryday()">
-      <option value="home">At Home</option>
-      <option value="shopping">Shopping</option>
-      <option value="restaurant">Restaurant</option>
-      <option value="travel">Travel</option>
-      <option value="friends">Friends</option>
-      <option value="phone">Phone Conversation</option>
-    </select>
+<div class="example" id="everydaySentence"></div>
 
-    <div class="example" id="everydaySentence"></div>
-
-    <button class="primary" onclick="speakTextById('everydaySentence')">
-      🔊 Listen
-    </button>
-
-    <button class="secondary" onclick="newEveryday()">
-      Another Sentence
-    </button>
-
-    <button class="green" onclick="markPractice('Everyday')">
-      ✓ I Practiced This
-    </button>
-  </div>
-
-  <div class="card">
-    <h2>Build a Sentence</h2>
-
-    <p class="small">Read the situation and say your answer before showing the sample.</p>
-
-    <div id="everydaySituation" class="example"></div>
-
-    <button class="secondary" onclick="showEverydayAnswer()">
-      Show Sample Answer
-    </button>
-
-    <div class="output hidden" id="everydayAnswer"></div>
-
-    <button class="secondary" onclick="newSituation()">
-      New Situation
-    </button>
-  </div>
-
+<button class="primary" onclick="speakId('everydaySentence')">🔊 Listen</button>
+<button class="secondary" onclick="newEveryday()">Another Sentence</button>
+</div>
 </section>
 
 
 <section id="grammar" class="page hidden">
 
-  <div class="card">
-    <h2>Grammar Coach</h2>
+<div class="card">
+<h2>Grammar Coach</h2>
 
-    <p>Write your sentence below. This free checker looks for common grammar, spelling, and workplace English mistakes.</p>
+<p>Type your sentence. The checker will try to correct common grammar, spelling and professional-English mistakes.</p>
 
-    <textarea id="grammarInput" placeholder="Example: Small provent can prevent when escalated immediately"></textarea>
+<textarea id="grammarInput" placeholder="Example: Small problem can prevent if it is excalated immediately"></textarea>
 
-    <button class="primary" onclick="checkGrammar()">
-      Correct My Grammar
-    </button>
+<button class="primary" onclick="checkGrammar()">Correct My Grammar</button>
+<button class="secondary" onclick="grammarExample()">Try Example</button>
+<button class="secondary" onclick="clearGrammar()">Clear</button>
 
-    <button class="secondary" onclick="grammarExample()">
-      Try Example
-    </button>
+<div id="grammarResult"></div>
+</div>
 
-    <button class="secondary" onclick="clearGrammar()">
-      Clear
-    </button>
+<div class="card">
+<h2>Grammar Practice</h2>
 
-    <div id="grammarResult"></div>
-  </div>
+<div class="example" id="grammarQuestion"></div>
 
+<button class="secondary" onclick="showGrammarAnswer()">Show Answer</button>
+<button class="secondary" onclick="newGrammarChallenge()">Next</button>
 
-  <div class="card">
-    <h2>Grammar Challenge</h2>
-
-    <div class="example" id="grammarQuestion"></div>
-
-    <button class="secondary" onclick="showGrammarAnswer()">
-      Show Answer
-    </button>
-
-    <div class="output hidden" id="grammarAnswer"></div>
-
-    <button class="secondary" onclick="newGrammarChallenge()">
-      Next Challenge
-    </button>
-  </div>
+<div id="grammarAnswer" class="output hidden"></div>
+</div>
 
 </section>
 
 
 <section id="story" class="page hidden">
 
-  <div class="card">
-    <h2>Read a Story</h2>
+<div class="card">
+<h2>Read a Story</h2>
 
-    <select id="storyLevel" onchange="newStory()">
-      <option value="easy">Easy</option>
-      <option value="medium">Medium</option>
-      <option value="work">Workplace</option>
-    </select>
+<select id="storyLevel" onchange="newStory()">
+<option value="easy">Easy</option>
+<option value="medium">Medium</option>
+<option value="work">Workplace</option>
+</select>
 
-    <h3 id="storyTitle"></h3>
+<h3 id="storyTitle"></h3>
+<div class="story" id="storyText"></div>
 
-    <div class="story" id="storyText"></div>
-
-    <button class="primary" onclick="speakTextById('storyText')">
-      🔊 Listen to Story
-    </button>
-
-    <button class="secondary" onclick="newStory()">
-      Another Story
-    </button>
-
-    <button class="green" onclick="markPractice('Story')">
-      ✓ Finished Reading
-    </button>
-  </div>
-
-
-  <div class="card">
-    <h2>Story Questions</h2>
-
-    <div id="storyQuestions"></div>
-  </div>
+<button class="primary" onclick="speakId('storyText')">🔊 Listen</button>
+<button class="secondary" onclick="newStory()">Another Story</button>
+</div>
 
 </section>
 
 
 <section id="pronounce" class="page hidden">
 
-  <div class="card">
-    <h2>Pronunciation Practice</h2>
+<div class="card">
+<h2>Pronunciation Practice</h2>
 
-    <p class="small">Listen first, then repeat the sentence slowly and clearly.</p>
+<p>Listen first, then repeat slowly.</p>
 
-    <div class="example" id="pronounceSentence"></div>
+<div class="example" id="pronounceSentence"></div>
 
-    <button class="primary" onclick="speakSlow()">
-      🔊 Slow
-    </button>
-
-    <button class="primary" onclick="speakNormal()">
-      🔊 Normal
-    </button>
-
-    <button class="secondary" onclick="newPronunciation()">
-      Next Sentence
-    </button>
-
-    <button class="green" onclick="markPractice('Pronunciation')">
-      ✓ I Repeated It
-    </button>
-  </div>
-
-
-  <div class="card">
-    <h2>Difficult Words</h2>
-
-    <div id="wordPractice"></div>
-
-    <button class="secondary" onclick="newWordPractice()">
-      New Words
-    </button>
-  </div>
+<button class="primary" onclick="speakSlow()">🔊 Slow</button>
+<button class="primary" onclick="speakNormal()">🔊 Normal</button>
+<button class="secondary" onclick="newPronunciation()">Next</button>
+</div>
 
 </section>
 
 
 <section id="work" class="page hidden">
 
-  <div class="card">
-    <h2>Work English</h2>
+<div class="card">
+<h2>Work English</h2>
 
-    <select id="workCategory" onchange="newWorkSentence()">
-      <option value="meeting">Meetings</option>
-      <option value="accounting">Accounting</option>
-      <option value="management">Management</option>
-      <option value="email">Professional Email</option>
-      <option value="concern">Raising Concerns</option>
-      <option value="confidence">Speaking with Confidence</option>
-    </select>
+<select id="workCategory" onchange="newWorkSentence()">
+<option value="meeting">Meetings</option>
+<option value="accounting">Accounting</option>
+<option value="management">Management</option>
+<option value="email">Professional Email</option>
+<option value="concern">Raising Concerns</option>
+</select>
 
-    <div class="example" id="workSentence"></div>
+<div class="example" id="workSentence"></div>
 
-    <button class="primary" onclick="speakTextById('workSentence')">
-      🔊 Listen
-    </button>
-
-    <button class="secondary" onclick="newWorkSentence()">
-      Another Sentence
-    </button>
-
-    <button class="green" onclick="markPractice('Work')">
-      ✓ I Practiced This
-    </button>
-  </div>
-
-
-  <div class="card">
-    <h2>Practice a Workplace Situation</h2>
-
-    <div class="example" id="workSituation"></div>
-
-    <button class="secondary" onclick="showWorkResponse()">
-      Show Suggested Response
-    </button>
-
-    <div class="output hidden" id="workResponse"></div>
-
-    <button class="secondary" onclick="newWorkSituation()">
-      New Situation
-    </button>
-  </div>
+<button class="primary" onclick="speakId('workSentence')">🔊 Listen</button>
+<button class="secondary" onclick="newWorkSentence()">Another Sentence</button>
+</div>
 
 </section>
 
@@ -541,321 +252,589 @@ textarea{
 
 
 <nav class="bottom-nav">
-  <button class="active" onclick="showPage('home',this)">Home</button>
-  <button onclick="showPage('everyday',this)">Everyday</button>
-  <button onclick="showPage('grammar',this)">Grammar</button>
-  <button onclick="showPage('story',this)">Story</button>
-  <button onclick="showPage('pronounce',this)">Pronounce</button>
-  <button onclick="showPage('work',this)">Work</button>
+<button class="active" onclick="showPage('home',this)">Home</button>
+<button onclick="showPage('everyday',this)">Everyday</button>
+<button onclick="showPage('grammar',this)">Grammar</button>
+<button onclick="showPage('story',this)">Story</button>
+<button onclick="showPage('pronounce',this)">Pronounce</button>
+<button onclick="showPage('work',this)">Work</button>
 </nav>
 
 
 <script>
 
-const dailyChallenges = [
+function randomItem(arr){
+  return arr[Math.floor(Math.random()*arr.length)];
+}
+
+function showPage(id,btn){
+  document.querySelectorAll(".page").forEach(p=>p.classList.add("hidden"));
+  document.getElementById(id).classList.remove("hidden");
+
+  document.querySelectorAll(".bottom-nav button").forEach(b=>b.classList.remove("active"));
+  btn.classList.add("active");
+
+  window.scrollTo(0,0);
+}
+
+function speak(text,rate){
+  if(!("speechSynthesis" in window)) return;
+
+  speechSynthesis.cancel();
+
+  const u=new SpeechSynthesisUtterance(text);
+  u.lang="en-US";
+  u.rate=rate || .9;
+
+  speechSynthesis.speak(u);
+}
+
+function speakId(id){
+  speak(document.getElementById(id).innerText,.9);
+}
+
+function speakSlow(){
+  speak(document.getElementById("pronounceSentence").innerText,.65);
+}
+
+function speakNormal(){
+  speak(document.getElementById("pronounceSentence").innerText,.95);
+}
+
+
+const challenges=[
 "Tell me what you did this morning.",
 "Describe your work in three sentences.",
-"Talk about something that made you happy today.",
-"Explain one problem you solved at work.",
-"Describe your plans for tomorrow.",
-"Talk about your favorite food.",
-"Describe your family without reading from a script.",
-"Explain what you normally do during month-end closing.",
+"Explain one problem you solved today.",
+"Talk about your plans for tomorrow.",
 "Describe a place you want to visit.",
-"Tell a short story about your day.",
-"Explain one thing you want to improve in English.",
-"Describe a difficult decision you made.",
-"Explain how you organize your work.",
-"Talk about something you learned this week.",
-"Imagine you are speaking with your CEO. Introduce yourself."
+"Explain one concern you currently have at work.",
+"Imagine you are speaking with your CEO. Introduce yourself.",
+"Describe how you normally organize your work.",
+"Explain what happens during month-end closing.",
+"Talk about one thing you want to improve."
 ];
 
+function newChallenge(){
+  dailyChallenge.innerText=randomItem(challenges);
+}
 
-const everyday = {
 
+const everyday={
 home:[
-"I am going to clean the house this afternoon.",
-"Can you help me prepare dinner?",
-"I will finish this first before I do anything else.",
-"I forgot where I put my phone.",
+"I will finish my work before I rest.",
 "I need to buy groceries later.",
 "Please turn off the lights before you leave.",
-"I am already tired, so I will rest for a while.",
-"What time are we leaving tomorrow?",
-"I will prepare everything tonight.",
-"Do we still have enough food at home?",
-"I need to charge my phone.",
-"I will call you when I get home."
+"I will call you when I get home.",
+"What time are we leaving tomorrow?"
 ],
-
 shopping:[
 "How much is this?",
 "Do you have this in another size?",
-"Can I pay using a card?",
-"Is there a discount for this item?",
-"I am only looking, thank you.",
-"Can you show me another option?",
-"Do you have a cheaper one?",
-"Where can I find the cashier?",
-"Can I return this if it does not fit?",
-"Is this the final price?",
-"Can you pack this separately?",
-"I would like to buy two of these."
+"Can I pay by card?",
+"Is there a discount?",
+"Do you have a cheaper option?"
 ],
-
 restaurant:[
 "May I see the menu, please?",
 "I would like to order this.",
-"Can we have some water, please?",
-"Is this dish spicy?",
-"Can you make it less spicy?",
 "Could we have the bill, please?",
-"What do you recommend?",
-"I would like my food without onions.",
-"Can we have another plate?",
-"How long will the order take?",
-"We are ready to order.",
-"Can I have this for takeout?"
+"Is this dish spicy?",
+"What do you recommend?"
 ],
-
 travel:[
 "How long does it take to get there?",
 "Where can I get a taxi?",
-"How much is the fare?",
-"Can you take us to this hotel?",
-"What time does the airport shuttle leave?",
-"Is this the correct platform?",
+"What time should we leave?",
 "Where is the departure gate?",
-"Can you help me with my luggage?",
-"What time should we leave the hotel?",
-"Is this seat available?",
-"How far is it from here?",
 "Could you show me the way?"
 ],
-
 friends:[
 "How have you been?",
-"It has been a long time.",
-"What have you been doing lately?",
-"Let us have coffee sometime.",
-"I am happy to see you again.",
-"How is your family?",
 "What are your plans this weekend?",
-"That sounds interesting.",
-"I completely understand what you mean.",
-"Thank you for inviting me.",
-"I had a great time.",
-"Message me when you get home."
-],
-
-phone:[
-"Hello, may I speak with her, please?",
-"Can I call you back later?",
-"I cannot hear you clearly.",
-"The signal is weak.",
-"Could you repeat that, please?",
-"Please send me the details by message.",
-"I will call you after the meeting.",
-"Sorry, I missed your call.",
-"Are you available for a quick call?",
-"Let me check and call you back.",
-"Can you hear me now?",
-"I will send you an update later."
+"It was nice seeing you.",
+"Message me when you get home.",
+"Thank you for inviting me."
 ]
-
 };
 
-
-const situations = [
-["You are late meeting a friend.","Sorry I am late. There was heavy traffic on the way here."],
-["You did not hear what someone said.","Sorry, could you please repeat that?"],
-["You want to ask the price of something.","Excuse me, how much is this?"],
-["You want to order food.","I would like to order this, please."],
-["You need more time.","Could you give me a few more minutes, please?"],
-["You cannot attend an event.","I am sorry, but I will not be able to attend."],
-["You want someone to wait.","Could you wait for me for a few minutes?"],
-["You want directions.","Excuse me, could you tell me how to get there?"],
-["You want to leave politely.","I need to go now. Thank you for your time."],
-["You want to ask for help.","Could you please help me with this?"]
-];
+function newEveryday(){
+  const c=everydayCategory.value;
+  everydaySentence.innerText=randomItem(everyday[c]);
+}
 
 
-const grammarChallenges = [
+const grammarChallenges=[
 ["She don't know the answer.","She doesn't know the answer."],
 ["I am agree with your suggestion.","I agree with your suggestion."],
-["The payments is still pending.","The payments are still pending."],
-["We need to discussed this tomorrow.","We need to discuss this tomorrow."],
+["The payments is pending.","The payments are pending."],
+["We need to discussed this.","We need to discuss this."],
 ["He didn't submitted the report.","He didn't submit the report."],
 ["The report already submit.","The report has already been submitted."],
-["We discussed about the issue yesterday.","We discussed the issue yesterday."],
-["The expenses is higher than our collections.","The expenses are higher than our collections."],
-["Management have not yet approved it.","Management has not yet approved it."],
-["I will revert back to you tomorrow.","I will get back to you tomorrow."],
-["As per checking, the payment is pending.","Upon checking, the payment is pending."],
+["Management have not approve it.","Management has not approved it."],
+["I will revert back to you.","I will get back to you."],
 ["Please explain me the process.","Please explain the process to me."],
-["She is more better now.","She is better now."],
-["I didn't went to the office.","I didn't go to the office."],
-["We have saw the report.","We have seen the report."],
-["The payment are already processed.","The payment is already processed."],
-["Cash inflows are not enough to outflows.","Cash inflows are not enough to cover the outflows."],
-["Kindly please submit this today.","Please submit this today."],
-["I need some informations.","I need some information."],
-["We can able to finish this today.","We can finish this today."]
+["The expenses is higher than collections.","The expenses are higher than our collections."]
 ];
 
+let currentGrammar;
 
-const stories = {
+function newGrammarChallenge(){
+  currentGrammar=randomItem(grammarChallenges);
+  grammarQuestion.innerText="Correct this sentence:\n\n"+currentGrammar[0];
+  grammarAnswer.innerText=currentGrammar[1];
+  grammarAnswer.classList.add("hidden");
+}
 
+function showGrammarAnswer(){
+  grammarAnswer.classList.remove("hidden");
+}
+
+function grammarExample(){
+  const examples=[
+    "Small problem can prevent if it is excalated immediately",
+    "The payments is still pending",
+    "I am agree with your suggestion",
+    "Management have not approve the payment",
+    "We need to discussed this tomorrow",
+    "He didn't submitted the report",
+    "Cash inflows is not enough to cover the expenses",
+    "Please explain me this transaction",
+    "I will revert back tomorrow",
+    "The report already submit"
+  ];
+
+  grammarInput.value=randomItem(examples);
+}
+
+function clearGrammar(){
+  grammarInput.value="";
+  grammarResult.innerHTML="";
+}
+
+
+/* ===========================
+   STRONGER FREE GRAMMAR CHECK
+   =========================== */
+
+function checkGrammar(){
+
+  let original=grammarInput.value.trim();
+
+  if(!original){
+    grammarResult.innerHTML=
+    '<div class="warning">Please type a sentence first.</div>';
+    return;
+  }
+
+  let text=original;
+  let reasons=[];
+
+
+  function fix(pattern,replacement,reason){
+
+    const previous=text;
+
+    text=text.replace(pattern,replacement);
+
+    if(text!==previous && reason){
+      reasons.push(reason);
+    }
+  }
+
+
+  /* SPELLING */
+
+  fix(/\bexcalated\b/gi,"escalated","Corrected the spelling of “escalated”.");
+
+  fix(/\bexcalate\b/gi,"escalate","Corrected the spelling of “escalate”.");
+
+  fix(/\brecieve\b/gi,"receive","Corrected the spelling of “receive”.");
+
+  fix(/\breceiveded\b/gi,"received","Corrected the spelling.");
+
+  fix(/\bseperate\b/gi,"separate","Corrected the spelling of “separate”.");
+
+  fix(/\boccurence\b/gi,"occurrence","Corrected the spelling.");
+
+  fix(/\bmanagment\b/gi,"management","Corrected the spelling of “management”.");
+
+  fix(/\bfinacial\b/gi,"financial","Corrected the spelling of “financial”.");
+
+  fix(/\baproval\b/gi,"approval","Corrected the spelling of “approval”.");
+
+  fix(/\bapprovement\b/gi,"approval","Use “approval” instead of “approvement”.");
+
+  fix(/\bpendings\b/gi,"pending items","Use “pending items” instead of “pendings”.");
+
+  fix(/\binformations\b/gi,"information","“Information” is uncountable.");
+
+  fix(/\badvices\b/gi,"advice","“Advice” is uncountable.");
+
+
+  /* YOUR TARGET SENTENCES */
+
+  fix(
+  /small problem can prevent if it is escalated immediately/gi,
+  "Small problems can be prevented if they are escalated immediately",
+  "Changed the sentence to the correct passive form."
+  );
+
+  fix(
+  /small problems can prevent if they are escalated immediately/gi,
+  "Small problems can be prevented if they are escalated immediately",
+  "Use “can be prevented” because the problems are being prevented."
+  );
+
+  fix(
+  /small problem can prevent when escalated immediately/gi,
+  "Small problems can be prevented when they are escalated immediately",
+  "Corrected the plural form and passive voice."
+  );
+
+  fix(
+  /small problems can prevent when escalated immediately/gi,
+  "Small problems can be prevented when they are escalated immediately",
+  "Corrected the passive voice."
+  );
+
+  fix(
+  /small provent can prevent when escalated immediately/gi,
+  "Small problems can be prevented when they are escalated immediately",
+  "Corrected the word choice and sentence structure."
+  );
+
+
+  /* SUBJECT + VERB AGREEMENT */
+
+  fix(/\bpayments is\b/gi,"payments are","Use “are” with plural “payments”.");
+
+  fix(/\bexpenses is\b/gi,"expenses are","Use “are” with plural “expenses”.");
+
+  fix(/\bcollections is\b/gi,"collections are","Use “are” with plural “collections”.");
+
+  fix(/\bdocuments is\b/gi,"documents are","Use “are” with plural “documents”.");
+
+  fix(/\breports is\b/gi,"reports are","Use “are” with plural “reports”.");
+
+  fix(/\bcash inflows is\b/gi,"cash inflows are","Use “are” with plural “cash inflows”.");
+
+  fix(/\bpayment are\b/gi,"payment is","Use “is” with singular “payment”.");
+
+  fix(/\breport are\b/gi,"report is","Use “is” with singular “report”.");
+
+  fix(/\bmanagement have\b/gi,"management has","Use “management has” in this context.");
+
+  fix(/\bmanagement are\b/gi,"management is","Treat management as singular here.");
+
+
+  /* DO / DOES */
+
+  fix(/\bshe don't\b/gi,"she doesn't","Use “doesn't” with she.");
+
+  fix(/\bhe don't\b/gi,"he doesn't","Use “doesn't” with he.");
+
+  fix(/\bit don't\b/gi,"it doesn't","Use “doesn't” with it.");
+
+  fix(/\bdoesn't knows\b/gi,"doesn't know","Use the base verb after “doesn't”.");
+
+  fix(/\bdoesn't has\b/gi,"doesn't have","Use “have” after “doesn't”.");
+
+  fix(/\bdoesn't needs\b/gi,"doesn't need","Use the base verb after “doesn't”.");
+
+
+  /* DID */
+
+  fix(/\bdidn't went\b/gi,"didn't go","Use the base verb after “didn't”.");
+
+  fix(/\bdidn't submitted\b/gi,"didn't submit","Use the base verb after “didn't”.");
+
+  fix(/\bdidn't received\b/gi,"didn't receive","Use the base verb after “didn't”.");
+
+  fix(/\bdidn't knew\b/gi,"didn't know","Use the base verb after “didn't”.");
+
+  fix(/\bdidn't approved\b/gi,"didn't approve","Use the base verb after “didn't”.");
+
+
+  /* TO + BASE VERB */
+
+  fix(/\bneed to discussed\b/gi,"need to discuss","Use the base verb after “to”.");
+
+  fix(/\bneed to submitted\b/gi,"need to submit","Use the base verb after “to”.");
+
+  fix(/\bneed to reviewed\b/gi,"need to review","Use the base verb after “to”.");
+
+  fix(/\bneed to approved\b/gi,"need to approve","Use the base verb after “to”.");
+
+  fix(/\bneed to processed\b/gi,"need to process","Use the base verb after “to”.");
+
+  fix(/\bwant to discussed\b/gi,"want to discuss","Use the base verb after “to”.");
+
+
+  /* PRESENT PERFECT */
+
+  fix(/\bhave went\b/gi,"have gone","Use “gone” after “have”.");
+
+  fix(/\bhave saw\b/gi,"have seen","Use “seen” after “have”.");
+
+  fix(/\bhave did\b/gi,"have done","Use “done” after “have”.");
+
+  fix(/\bhas went\b/gi,"has gone","Use “gone” after “has”.");
+
+  fix(/\bhas saw\b/gi,"has seen","Use “seen” after “has”.");
+
+
+  /* APPROVAL */
+
+  fix(
+  /\bmanagement has not yet approve\b/gi,
+  "management has not yet approved",
+  "Use the past participle “approved” after “has”."
+  );
+
+  fix(
+  /\bmanagement have not yet approve\b/gi,
+  "management has not yet approved",
+  "Corrected subject-verb agreement and verb form."
+  );
+
+  fix(
+  /\bmanagement have not approve\b/gi,
+  "management has not approved",
+  "Use “management has not approved”."
+  );
+
+
+  /* PASSIVE / WORKPLACE */
+
+  fix(
+  /\breport already submit\b/gi,
+  "report has already been submitted",
+  "Use the present perfect passive form."
+  );
+
+  fix(
+  /\bpayment already process\b/gi,
+  "payment has already been processed",
+  "Use the present perfect passive form."
+  );
+
+  fix(
+  /\bdocuments already submit\b/gi,
+  "documents have already been submitted",
+  "Use the present perfect passive form."
+  );
+
+  fix(
+  /\bpayment already paid\b/gi,
+  "payment has already been made",
+  "This sounds more natural in professional English."
+  );
+
+
+  /* COMMON PHILIPPINE ENGLISH */
+
+  fix(/\bi am agree\b/gi,"I agree","Say “I agree,” not “I am agree.”");
+
+  fix(/\bas per checking\b/gi,"upon checking","“Upon checking” sounds more natural.");
+
+  fix(/\bfor checking\b/gi,"for review","“For review” is more natural professionally.");
+
+  fix(/\brevert back\b/gi,"get back","Avoid “revert back.”");
+
+  fix(/\breturn back\b/gi,"return","“Return” already means go back.");
+
+  fix(/\bkindly please\b/gi,"please","Use either “kindly” or “please”.");
+
+  fix(/\bdiscuss about\b/gi,"discuss","“Discuss” does not need “about”.");
+
+  fix(/\bdiscussed about\b/gi,"discussed","“Discussed” does not need “about”.");
+
+  fix(/\bregarding about\b/gi,"regarding","Use “regarding” or “about,” not both.");
+
+  fix(/\bcope up with\b/gi,"cope with","The correct phrase is “cope with”.");
+
+  fix(/\bdespite of\b/gi,"despite","Use “despite,” not “despite of”.");
+
+  fix(/\bcan able to\b/gi,"can","Use “can” or “be able to,” not both.");
+
+  fix(/\bgo to office\b/gi,"go to the office","Use “the office”.");
+
+  fix(/\bwent to office\b/gi,"went to the office","Use “the office”.");
+
+
+  /* EXPLAIN */
+
+  fix(
+  /\bexplain me\b/gi,
+  "explain to me",
+  "Use “explain something to someone.”"
+  );
+
+
+  /* COMPARATIVES */
+
+  fix(/\bmore better\b/gi,"better","Do not use “more” with “better”.");
+
+  fix(/\bmore higher\b/gi,"higher","Do not use “more” with “higher”.");
+
+  fix(/\bmore easier\b/gi,"easier","Do not use “more” with “easier”.");
+
+  fix(/\bmore faster\b/gi,"faster","Do not use “more” with “faster”.");
+
+
+  /* CASH FLOW */
+
+  fix(
+  /\bcash inflows are not enough to outflows\b/gi,
+  "cash inflows are not enough to cover the outflows",
+  "Use “cover the outflows.”"
+  );
+
+  fix(
+  /\bcash inflows are not enough for outflows\b/gi,
+  "cash inflows are not enough to cover the outflows",
+  "This is more natural financial English."
+  );
+
+  fix(
+  /\bexpenses are higher than collections\b/gi,
+  "expenses are higher than our collections",
+  "Adding “our” makes the comparison clearer."
+  );
+
+
+  /* PUNCTUATION */
+
+  text=text.replace(/\s+,/g,",");
+  text=text.replace(/\s+\./g,".");
+  text=text.replace(/\s{2,}/g," ").trim();
+
+
+  /* CAPITALIZE */
+
+  if(text.length){
+    text=text.charAt(0).toUpperCase()+text.slice(1);
+  }
+
+  if(!/[.!?]$/.test(text)){
+    text+=".";
+  }
+
+
+  const normalizedOriginal=
+    original.charAt(0).toUpperCase()+
+    original.slice(1).replace(/\s{2,}/g," ").trim();
+
+  const originalWithPeriod=
+    /[.!?]$/.test(normalizedOriginal)
+    ? normalizedOriginal
+    : normalizedOriginal+".";
+
+
+  if(text===originalWithPeriod){
+
+    grammarResult.innerHTML=
+    '<div class="warning">'+
+    '<strong>No automatic correction was found.</strong><br><br>'+
+    'This free offline checker may not understand every sentence. '+
+    'Try a shorter sentence if the result does not look correct.'+
+    '</div>';
+
+  }else{
+
+    let why="";
+
+    if(reasons.length){
+
+      why="<br><br><strong>Why:</strong><br>";
+
+      reasons.forEach(function(r){
+        why+="• "+r+"<br>";
+      });
+    }
+
+    grammarResult.innerHTML=
+    '<div class="success">'+
+    '<strong>Corrected sentence:</strong><br><br>'+
+    text+
+    why+
+    '</div>';
+  }
+}
+
+
+const stories={
 easy:[
 {
 title:"A Busy Morning",
-text:"Anna woke up early because she had many things to do. She prepared breakfast, cleaned the kitchen, and checked her messages. Before leaving the house, she made a short list of the things she needed to buy. At the store, she finished everything quickly because she was organized.",
-questions:[
-"What did Anna do before leaving the house?",
-"Why did she finish quickly at the store?"
-]
-},
-{
-title:"The Lost Umbrella",
-text:"Mark brought an umbrella to work because the weather looked cloudy. When he was ready to go home, he could not find it. He checked his desk and the meeting room. Finally, he found it beside the office entrance. He laughed because he had walked past it several times.",
-questions:[
-"Why did Mark bring an umbrella?",
-"Where did he find it?"
-]
+text:"Anna woke up early because she had many things to do. She prepared breakfast, cleaned the kitchen, and checked her messages. Before leaving the house, she made a list of the things she needed to buy."
 },
 {
 title:"Dinner With Family",
-text:"Maria arrived home at six in the evening. Her family was preparing dinner. She helped cut the vegetables while her husband cooked the food. After dinner, they talked about their day and watched a movie together.",
-questions:[
-"What time did Maria arrive home?",
-"What did the family do after dinner?"
-]
+text:"Maria arrived home at six in the evening. Her family was preparing dinner. She helped prepare the food. After dinner, they talked about their day and watched a movie."
 }
 ],
 
 medium:[
 {
 title:"Learning Something New",
-text:"Carla wanted to improve her English because she often needed to speak during meetings. Instead of studying for several hours once a week, she practiced for fifteen minutes every day. She listened to short sentences, repeated them aloud, and wrote down new expressions. After several weeks, she noticed that speaking became easier and more natural.",
-questions:[
-"Why did Carla want to improve her English?",
-"What made her practice effective?"
-]
-},
-{
-title:"A Change of Plans",
-text:"The family planned to spend the weekend at the beach, but the weather forecast showed heavy rain. They decided to change their plans rather than cancel the weekend completely. They visited a museum, ate at a new restaurant, and spent the evening playing games. Although the trip was different from what they expected, everyone enjoyed it.",
-questions:[
-"Why did the family change their plans?",
-"Did they still enjoy the weekend?"
-]
+text:"Carla wanted to improve her English because she often needed to speak during meetings. She practiced for fifteen minutes every day. After several weeks, speaking became easier and more natural."
 },
 {
 title:"Solving a Small Problem",
-text:"Lina noticed that her phone was not charging properly. At first, she thought the battery was damaged. Before buying a new charger, she carefully cleaned the charging port. After removing some dust, the phone started charging normally again. She was glad she checked the simple things first.",
-questions:[
-"What problem did Lina have?",
-"How did she solve it?"
-]
+text:"Lina noticed that her phone was not charging properly. Before buying a new charger, she cleaned the charging port. After removing some dust, the phone started charging normally."
 }
 ],
 
 work:[
 {
 title:"The Delayed Report",
-text:"Michelle was waiting for an important report from another department. The report was needed to complete the monthly financial closing. Instead of waiting until the deadline passed, she contacted the department early and explained why the information was important. They agreed on a new submission time, and the accounting team was able to complete the report on schedule.",
-questions:[
-"Why was the report important?",
-"What did Michelle do to prevent further delay?"
-]
+text:"Michelle was waiting for an important report from another department. Instead of waiting until the deadline passed, she contacted the department early and explained why the information was important."
 },
 {
 title:"Raising a Concern",
-text:"During a management meeting, the accounting team noticed that cash outflows were consistently higher than cash inflows. The team prepared a simple summary showing the numbers and the expected impact. Rather than only pointing out the problem, they also presented possible actions to improve collections and control spending.",
-questions:[
-"What concern did the accounting team identify?",
-"How did they present the concern professionally?"
-]
-},
-{
-title:"A Difficult Conversation",
-text:"A manager asked why a payment had been placed on hold. The accountant calmly explained that supporting documents were incomplete and that the payment could be processed once the requirements were submitted. By focusing on the process instead of blaming anyone, the discussion remained professional.",
-questions:[
-"Why was the payment on hold?",
-"How did the accountant keep the conversation professional?"
-]
+text:"The accounting team noticed that cash outflows were higher than cash inflows. They prepared a clear summary and presented possible actions to improve collections and control spending."
 }
 ]
-
 };
 
+function newStory(){
+  const s=randomItem(stories[storyLevel.value]);
+  storyTitle.innerText=s.title;
+  storyText.innerText=s.text;
+}
 
-const pronunciationSentences = [
+
+const pronunciation=[
 "The payment has already been processed.",
 "We need to discuss this with management.",
 "Please let me know if you need any clarification.",
-"I will review the report this afternoon.",
 "The collections are lower than expected.",
 "We need to prioritize the urgent payments.",
-"Could you please repeat that more slowly?",
 "I would like to explain our current situation.",
 "We are still waiting for management approval.",
-"Please submit the supporting documents.",
-"The accounting team is completing the month-end report.",
-"We need to improve our cash collection.",
-"The report will be available tomorrow morning.",
-"Can we discuss this after the meeting?",
-"I completely understand your concern.",
-"We will provide an update once the review is complete.",
-"Please give us enough time to verify the information.",
+"The supporting documents are incomplete.",
 "The expenses are higher than our collections.",
 "We need a clear decision from management.",
-"I appreciate your guidance on this matter.",
 "The outstanding balance remains unpaid.",
 "We need to reconcile the accounts.",
-"The supporting documents are incomplete.",
 "The payment schedule has been updated.",
 "The financial impact should be considered."
 ];
 
-
-const difficultWords = [
-["accounting","uh-KOWN-ting"],
-["financial","fy-NAN-shuhl"],
-["management","MAN-ij-ment"],
-["schedule","SKED-jool"],
-["colleague","KOL-eeg"],
-["receipt","ri-SEET"],
-["debt","DET"],
-["comfortable","KUMF-ter-buhl"],
-["business","BIZ-nis"],
-["purchase","PUR-chus"],
-["analysis","uh-NAL-uh-sis"],
-["development","di-VEL-up-ment"],
-["organization","or-guh-nuh-ZAY-shun"],
-["particularly","par-TIK-yuh-ler-lee"],
-["availability","uh-vay-luh-BIL-uh-tee"],
-["reconciliation","rek-un-sil-ee-AY-shun"],
-["expenditure","ek-SPEN-di-cher"],
-["liability","ly-uh-BIL-uh-tee"],
-["subsidiary","sub-SID-ee-air-ee"],
-["approximately","uh-PROK-suh-mut-lee"]
-];
+function newPronunciation(){
+  pronounceSentence.innerText=randomItem(pronunciation);
+}
 
 
-const workSentences = {
-
+const work={
 meeting:[
 "May I add something to the discussion?",
 "I would like to clarify one point.",
 "From the accounting side, we have one concern.",
 "Can we agree on the next action?",
-"May we confirm the deadline?",
-"I understand the proposal, but we should also consider the financial impact.",
-"Could you please clarify the expected timeline?",
-"Before we proceed, I would like to raise one concern.",
-"Based on our records, there is still an outstanding balance.",
-"I suggest that we review the numbers first."
+"Before we proceed, I would like to raise one concern."
 ],
 
 accounting:[
@@ -863,38 +842,23 @@ accounting:[
 "We are currently reconciling the outstanding balances.",
 "The expenses are higher than our current collections.",
 "We need to verify the entries before closing the books.",
-"The amount has already been recorded in the system.",
-"The transaction needs further review.",
-"We are waiting for the final supporting documents.",
-"The account balance should be reconciled before migration.",
-"The payment will be included in the next disbursement cycle.",
-"We need to confirm the correct accounting treatment."
+"The transaction needs further review."
 ],
 
 management:[
 "We need management's decision before we proceed.",
 "The delay in the decision may affect other departments.",
 "We would appreciate clear guidance on this matter.",
-"We are raising this concern because there may be a financial impact.",
 "We need to address this before the issue becomes bigger.",
-"The team needs a clear direction going forward.",
-"We recommend reviewing the current process.",
-"We would like management to consider the potential risks.",
-"The concern has already been escalated.",
-"A timely decision will help us prevent further delays."
+"A timely decision will help prevent further delays."
 ],
 
 email:[
 "Please see the attached report for your review.",
-"Kindly let us know if you have any questions.",
+"Please let us know if you have any questions.",
 "Thank you for your guidance.",
 "May we request your confirmation on this matter?",
-"Please provide the required documents by the deadline.",
-"Upon checking, the payment is still pending.",
-"We will provide an update once the review is complete.",
-"Please confirm if we may proceed.",
-"Thank you for your immediate attention to this matter.",
-"For your reference, please see the details below."
+"Upon checking, the payment is still pending."
 ],
 
 concern:[
@@ -902,825 +866,25 @@ concern:[
 "We have noticed repeated delays in resolving urgent matters.",
 "This may have an impact on our operations and cash flow.",
 "We recommend addressing this issue as soon as possible.",
-"We have already escalated this concern several times.",
-"We want to prevent this issue from becoming more serious.",
-"The current situation may affect other departments.",
-"We need a clear action plan to resolve this concern.",
-"We would appreciate management's immediate guidance.",
-"Our intention is to help prevent further financial impact."
-],
-
-confidence:[
-"Based on the information available, this is our recommendation.",
-"I can explain the accounting impact.",
-"Let me walk you through the numbers.",
-"I understand your concern.",
-"I will verify the details and get back to you.",
-"I would like to share my perspective.",
-"From my experience, this process may need improvement.",
-"I am confident that we can resolve this.",
-"Let me clarify what happened.",
-"These are the main points we need to consider."
+"Our intention is to prevent further financial impact."
 ]
-
 };
 
-
-const workSituations = [
-[
-"Your CEO asks why expenses are higher than collections.",
-"Our current cash outflows are higher than our cash inflows. We are reviewing collections and upcoming payments so we can identify the cash requirement and recommend actions."
-],
-[
-"Another department submitted documents after the cut-off.",
-"The documents were submitted after the cut-off, so the payment will be included in the next regular disbursement cycle unless management approves it as urgent."
-],
-[
-"You need management to make a decision quickly.",
-"We would appreciate management's guidance as soon as possible because the delay may affect other departments and create additional financial impact."
-],
-[
-"A supplier asks why payment is delayed.",
-"The payment is currently under review. We are completing the required verification and will provide an update once the process is finished."
-],
-[
-"You disagree with a suggestion during a meeting.",
-"I understand the suggestion. However, from the accounting side, we also need to consider the financial impact before we proceed."
-],
-[
-"You need to ask someone to explain an unusual transaction.",
-"Could you please provide an explanation and supporting documents for this transaction? We need them for proper accounting and audit documentation."
-],
-[
-"Management asks for your recommendation.",
-"Based on the current information, I recommend that we verify the outstanding items first and prioritize the most urgent requirements."
-]
-];
-
-
-function randomItem(arr){
-  return arr[Math.floor(Math.random()*arr.length)];
-}
-
-
-function showPage(pageId,btn){
-
-  document.querySelectorAll(".page").forEach(function(page){
-    page.classList.add("hidden");
-  });
-
-  document.getElementById(pageId).classList.remove("hidden");
-
-  document.querySelectorAll(".bottom-nav button").forEach(function(button){
-    button.classList.remove("active");
-  });
-
-  if(btn){
-    btn.classList.add("active");
-  }
-
-  window.scrollTo(0,0);
-}
-
-
-function speak(text,rate){
-
-  if(!("speechSynthesis" in window)){
-    alert("Speech is not supported on this browser.");
-    return;
-  }
-
-  speechSynthesis.cancel();
-
-  const utterance = new SpeechSynthesisUtterance(text);
-  utterance.lang = "en-US";
-  utterance.rate = rate || 0.9;
-
-  speechSynthesis.speak(utterance);
-}
-
-
-function speakTextById(id){
-  const text = document.getElementById(id).innerText;
-  speak(text,0.9);
-}
-
-
-function speakSlow(){
-  speak(document.getElementById("pronounceSentence").innerText,0.65);
-}
-
-
-function speakNormal(){
-  speak(document.getElementById("pronounceSentence").innerText,0.95);
-}
-
-
-function newChallenge(){
-  document.getElementById("dailyChallenge").innerText=randomItem(dailyChallenges);
-}
-
-
-function newEveryday(){
-
-  const category=document.getElementById("everydayCategory").value;
-
-  document.getElementById("everydaySentence").innerText=
-  randomItem(everyday[category]);
-}
-
-
-let currentSituation;
-
-function newSituation(){
-
-  currentSituation=randomItem(situations);
-
-  document.getElementById("everydaySituation").innerText=currentSituation[0];
-
-  const answer=document.getElementById("everydayAnswer");
-  answer.innerText=currentSituation[1];
-  answer.classList.add("hidden");
-}
-
-
-function showEverydayAnswer(){
-  document.getElementById("everydayAnswer").classList.remove("hidden");
-}
-
-
-let currentGrammar;
-
-function newGrammarChallenge(){
-
-  currentGrammar=randomItem(grammarChallenges);
-
-  document.getElementById("grammarQuestion").innerText=
-  "Correct this sentence:\n\n"+currentGrammar[0];
-
-  const answer=document.getElementById("grammarAnswer");
-  answer.innerText=currentGrammar[1];
-  answer.classList.add("hidden");
-}
-
-
-function showGrammarAnswer(){
-  document.getElementById("grammarAnswer").classList.remove("hidden");
-}
-
-
-function grammarExample(){
-
-  const samples=[
-    "Small provent can prevent when escalated immediately",
-    "The payments is still pending.",
-    "I am agree with your suggestion.",
-    "We need to discussed this with management.",
-    "He didn't submitted the report.",
-    "The report already submit.",
-    "Cash inflows are not enough to outflows.",
-    "Management have not yet approve the payment.",
-    "As per checking, the documents are incomplete.",
-    "I will revert back to you tomorrow."
-  ];
-
-  document.getElementById("grammarInput").value=randomItem(samples);
-}
-
-
-function clearGrammar(){
-
-  document.getElementById("grammarInput").value="";
-  document.getElementById("grammarResult").innerHTML="";
-}
-
-
-function capitalizeSentence(text){
-
-  text=text.trim();
-
-  if(!text){
-    return text;
-  }
-
-  return text.charAt(0).toUpperCase()+text.slice(1);
-}
-
-
-function checkGrammar(){
-
-  let original=document.getElementById("grammarInput").value.trim();
-
-  const result=document.getElementById("grammarResult");
-
-  if(!original){
-
-    result.innerHTML=
-    '<div class="warning">Please write a sentence first.</div>';
-
-    return;
-  }
-
-  let text=original;
-  let changes=[];
-
-
-  function replaceRule(regex,replacement,reason){
-
-    const before=text;
-
-    text=text.replace(regex,replacement);
-
-    if(before!==text){
-      changes.push(reason);
-    }
-  }
-
-
-  replaceRule(
-    /small\s+provent\s+can\s+prevent\s+when\s+escalated\s+immediately/gi,
-    "Small problems can be prevented from becoming bigger if they are escalated immediately",
-    "Corrected the word choice and sentence structure."
-  );
-
-
-  replaceRule(
-    /small\s+problems?\s+can\s+prevent,?\s+if\s+you\s+escalate\s+immediately/gi,
-    "Small problems can be prevented if you escalate them immediately",
-    "Used the passive form 'can be prevented' and added the object 'them'."
-  );
-
-
-  replaceRule(
-    /\bprovent\b/gi,
-    "problem",
-    "'Provent' is not normally used here. 'Problem' is likely the intended word."
-  );
-
-
-  replaceRule(
-    /\bi am agree\b/gi,
-    "I agree",
-    "Use 'I agree', not 'I am agree'."
-  );
-
-
-  replaceRule(
-    /\b(she|he|it) don't\b/gi,
-    function(match,p1){
-      return p1+" doesn't";
-    },
-    "Use 'doesn't' with he, she, and it."
-  );
-
-
-  replaceRule(
-    /\bdoesn't knows\b/gi,
-    "doesn't know",
-    "After 'doesn't', use the base verb."
-  );
-
-
-  replaceRule(
-    /\bdoesn't has\b/gi,
-    "doesn't have",
-    "After 'doesn't', use 'have'."
-  );
-
-
-  replaceRule(
-    /\bdidn't went\b/gi,
-    "didn't go",
-    "After 'didn't', use the base verb."
-  );
-
-
-  replaceRule(
-    /\bdidn't knew\b/gi,
-    "didn't know",
-    "After 'didn't', use the base verb."
-  );
-
-
-  replaceRule(
-    /\bdidn't submitted\b/gi,
-    "didn't submit",
-    "After 'didn't', use the base verb."
-  );
-
-
-  replaceRule(
-    /\bdidn't received\b/gi,
-    "didn't receive",
-    "After 'didn't', use the base verb."
-  );
-
-
-  replaceRule(
-    /\bneed to discussed\b/gi,
-    "need to discuss",
-    "After 'to', use the base verb."
-  );
-
-
-  replaceRule(
-    /\bneed to submitted\b/gi,
-    "need to submit",
-    "After 'to', use the base verb."
-  );
-
-
-  replaceRule(
-    /\bneed to reviewed\b/gi,
-    "need to review",
-    "After 'to', use the base verb."
-  );
-
-
-  replaceRule(
-    /\bneed to approved\b/gi,
-    "need to approve",
-    "After 'to', use the base verb."
-  );
-
-
-  replaceRule(
-    /\bhave went\b/gi,
-    "have gone",
-    "Use 'gone' after 'have'."
-  );
-
-
-  replaceRule(
-    /\bhave saw\b/gi,
-    "have seen",
-    "Use 'seen' after 'have'."
-  );
-
-
-  replaceRule(
-    /\bhave did\b/gi,
-    "have done",
-    "Use 'done' after 'have'."
-  );
-
-
-  replaceRule(
-    /\bmore better\b/gi,
-    "better",
-    "Do not use 'more' with 'better'."
-  );
-
-
-  replaceRule(
-    /\bmore higher\b/gi,
-    "higher",
-    "Do not use 'more' with 'higher'."
-  );
-
-
-  replaceRule(
-    /\bmore easier\b/gi,
-    "easier",
-    "Do not use 'more' with 'easier'."
-  );
-
-
-  replaceRule(
-    /\bmore faster\b/gi,
-    "faster",
-    "Do not use 'more' with 'faster'."
-  );
-
-
-  replaceRule(
-    /\bdiscuss about\b/gi,
-    "discuss",
-    "'Discuss' does not need 'about'."
-  );
-
-
-  replaceRule(
-    /\bdiscussed about\b/gi,
-    "discussed",
-    "'Discussed' does not need 'about'."
-  );
-
-
-  replaceRule(
-    /\bregarding about\b/gi,
-    "regarding",
-    "Use either 'regarding' or 'about', not both."
-  );
-
-
-  replaceRule(
-    /\breturn back\b/gi,
-    "return",
-    "'Return' already means go back."
-  );
-
-
-  replaceRule(
-    /\brevert back\b/gi,
-    "get back",
-    "In professional English, 'get back to you' sounds more natural."
-  );
-
-
-  replaceRule(
-    /\bkindly please\b/gi,
-    "please",
-    "Use either 'kindly' or 'please'."
-  );
-
-
-  replaceRule(
-    /\bcope up with\b/gi,
-    "cope with",
-    "The correct expression is 'cope with'."
-  );
-
-
-  replaceRule(
-    /\bdespite of\b/gi,
-    "despite",
-    "Use 'despite', not 'despite of'."
-  );
-
-
-  replaceRule(
-    /\bexplain me\b/gi,
-    "explain to me",
-    "Use 'explain something to someone'."
-  );
-
-
-  replaceRule(
-    /\bgo to office\b/gi,
-    "go to the office",
-    "Use 'the office' in this context."
-  );
-
-
-  replaceRule(
-    /\bwent to office\b/gi,
-    "went to the office",
-    "Use 'the office' in this context."
-  );
-
-
-  replaceRule(
-    /\binformations\b/gi,
-    "information",
-    "'Information' is uncountable."
-  );
-
-
-  replaceRule(
-    /\badvices\b/gi,
-    "advice",
-    "'Advice' is uncountable."
-  );
-
-
-  replaceRule(
-    /\bfurnitures\b/gi,
-    "furniture",
-    "'Furniture' is uncountable."
-  );
-
-
-  replaceRule(
-    /\bas per checking\b/gi,
-    "upon checking",
-    "'Upon checking' sounds more natural in professional English."
-  );
-
-
-  replaceRule(
-    /\bfor checking\b/gi,
-    "for review",
-    "'For review' is more natural in professional communication."
-  );
-
-
-  replaceRule(
-    /\bcan able to\b/gi,
-    "can",
-    "Use 'can' or 'be able to', not both together."
-  );
-
-
-  replaceRule(
-    /\bmanagement have\b/gi,
-    "management has",
-    "Treat 'management' as singular here."
-  );
-
-
-  replaceRule(
-    /\bmanagement has not yet approve\b/gi,
-    "management has not yet approved",
-    "Use the past participle after 'has'."
-  );
-
-
-  replaceRule(
-    /\bmanagement have not yet approve\b/gi,
-    "management has not yet approved",
-    "Use 'management has' and the past participle 'approved'."
-  );
-
-
-  replaceRule(
-    /\breport already submit\b/gi,
-    "report has already been submitted",
-    "Use the present perfect passive form."
-  );
-
-
-  replaceRule(
-    /\bpayment already process\b/gi,
-    "payment has already been processed",
-    "Use the present perfect passive form."
-  );
-
-
-  replaceRule(
-    /\bpayments is\b/gi,
-    "payments are",
-    "Use 'are' with the plural noun 'payments'."
-  );
-
-
-  replaceRule(
-    /\bexpenses is\b/gi,
-    "expenses are",
-    "Use 'are' with the plural noun 'expenses'."
-  );
-
-
-  replaceRule(
-    /\bcollections is\b/gi,
-    "collections are",
-    "Use 'are' with the plural noun 'collections'."
-  );
-
-
-  replaceRule(
-    /\bcash inflows is\b/gi,
-    "cash inflows are",
-    "Use 'are' with the plural noun 'cash inflows'."
-  );
-
-
-  replaceRule(
-    /\bpayment are\b/gi,
-    "payment is",
-    "Use 'is' with the singular noun 'payment'."
-  );
-
-
-  replaceRule(
-    /\bcash inflows are not enough to outflows\b/gi,
-    "cash inflows are not enough to cover the outflows",
-    "Use 'cover the outflows' for natural financial English."
-  );
-
-
-  replaceRule(
-    /\bcash inflows is not enough to outflows\b/gi,
-    "cash inflows are not enough to cover the outflows",
-    "Corrected subject-verb agreement and word choice."
-  );
-
-
-  replaceRule(
-    /\bexpenses are higher than collections\b/gi,
-    "expenses are higher than our collections",
-    "Adding 'our' makes the comparison clearer."
-  );
-
-
-  replaceRule(
-    /\bthe management\b/gi,
-    "management",
-    "In many workplace sentences, 'management' is more natural without 'the'."
-  );
-
-
-  text=text.replace(/\s+,/g,",");
-  text=text.replace(/,\s*,+/g,",");
-  text=text.replace(/\s{2,}/g," ").trim();
-
-  text=capitalizeSentence(text);
-
-  if(!/[.!?]$/.test(text)){
-    text+=".";
-  }
-
-
-  if(text===capitalizeSentence(original) ||
-     text===capitalizeSentence(original)+"."){
-
-    result.innerHTML=
-      '<div class="warning">'+
-      '<strong>I am not fully confident about this sentence.</strong><br><br>'+
-      'I did not find a matching offline grammar rule. This does not necessarily mean the sentence is correct.<br><br>'+
-      '<strong>Tip:</strong> Try writing the sentence in a simpler way, or practice it with one of the guided exercises below.'+
-      '</div>';
-
-  }else{
-
-    let explanation="";
-
-    if(changes.length>0){
-
-      explanation="<br><br><strong>Why:</strong><br>";
-
-      changes.forEach(function(change){
-        explanation+="• "+change+"<br>";
-      });
-    }
-
-    result.innerHTML=
-      '<div class="success">'+
-      '<strong>Suggested correction:</strong><br><br>'+
-      text+
-      explanation+
-      '</div>';
-
-    markPractice("Grammar");
-  }
-}
-
-
-let currentStory;
-
-function newStory(){
-
-  const level=document.getElementById("storyLevel").value;
-
-  currentStory=randomItem(stories[level]);
-
-  document.getElementById("storyTitle").innerText=currentStory.title;
-  document.getElementById("storyText").innerText=currentStory.text;
-
-  let html="";
-
-  currentStory.questions.forEach(function(q,index){
-    html+="<p><strong>"+(index+1)+".</strong> "+q+"</p>";
-  });
-
-  document.getElementById("storyQuestions").innerHTML=html;
-}
-
-
-function newPronunciation(){
-
-  document.getElementById("pronounceSentence").innerText=
-  randomItem(pronunciationSentences);
-}
-
-
-function newWordPractice(){
-
-  let selected=[];
-
-  while(selected.length<5){
-
-    const item=randomItem(difficultWords);
-
-    if(!selected.includes(item)){
-      selected.push(item);
-    }
-  }
-
-  let html="";
-
-  selected.forEach(function(item){
-
-    html+=
-    '<div class="output">'+
-    '<strong>'+item[0]+'</strong><br>'+
-    '<span class="small">'+item[1]+'</span><br>'+
-    '<button class="secondary" type="button" onclick="speak(\''+
-    item[0].replace(/'/g,"\\'")+
-    '\',0.7)">🔊 Listen</button>'+
-    '</div>';
-  });
-
-  document.getElementById("wordPractice").innerHTML=html;
-}
-
-
 function newWorkSentence(){
-
-  const category=document.getElementById("workCategory").value;
-
-  document.getElementById("workSentence").innerText=
-  randomItem(workSentences[category]);
+  workSentence.innerText=randomItem(work[workCategory.value]);
 }
 
 
-let currentWorkSituation;
-
-function newWorkSituation(){
-
-  currentWorkSituation=randomItem(workSituations);
-
-  document.getElementById("workSituation").innerText=
-  currentWorkSituation[0];
-
-  const response=document.getElementById("workResponse");
-
-  response.innerText=currentWorkSituation[1];
-  response.classList.add("hidden");
-}
-
-
-function showWorkResponse(){
-  document.getElementById("workResponse").classList.remove("hidden");
-}
-
-
-function markPractice(type){
-
-  let count=parseInt(localStorage.getItem("practiceCount") || "0");
-
-  count++;
-
-  localStorage.setItem("practiceCount",count);
-
-  const today=new Date().toDateString();
-  const lastDay=localStorage.getItem("lastPracticeDay");
-
-  let days=parseInt(localStorage.getItem("practiceDays") || "0");
-
-  if(lastDay!==today){
-
-    days++;
-
-    localStorage.setItem("practiceDays",days);
-    localStorage.setItem("lastPracticeDay",today);
-  }
-
-  let todayActivities=parseInt(
-    localStorage.getItem("todayActivities_"+today) || "0"
-  );
-
-  todayActivities=Math.min(todayActivities+1,5);
-
-  localStorage.setItem(
-    "todayActivities_"+today,
-    todayActivities
-  );
-
-  updateStats();
-}
-
-
-function updateStats(){
-
-  const count=parseInt(localStorage.getItem("practiceCount") || "0");
-  const days=parseInt(localStorage.getItem("practiceDays") || "0");
-
-  document.getElementById("practiceCount").innerText=count;
-  document.getElementById("daysCount").innerText=days;
-
-  const today=new Date().toDateString();
-
-  const todayActivities=parseInt(
-    localStorage.getItem("todayActivities_"+today) || "0"
-  );
-
-  const percent=Math.min(todayActivities*20,100);
-
-  document.getElementById("dailyProgress").style.width=percent+"%";
-
-  document.getElementById("progressText").innerText=
-  todayActivities+" of 5 daily activities completed";
-
-}
-
-
-function initializeApp(){
-
+function start(){
   newChallenge();
   newEveryday();
-  newSituation();
   newGrammarChallenge();
   newStory();
   newPronunciation();
-  newWordPractice();
   newWorkSentence();
-  newWorkSituation();
-  updateStats();
 }
 
-
-initializeApp();
+start();
 
 </script>
 
